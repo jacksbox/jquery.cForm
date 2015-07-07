@@ -1,6 +1,60 @@
+$background-color: 		#dddddd;
+$border-color: 			#333333;
+$marker-color:			#0066FF;
+$hover-color:			#0066FF;
+
 .cform-hidden {
+	// display: inline-block;
+	// width: 0; height: 0;
+	// margin: 0; padding: 0;
+	// border: 0; outline: 0;	
+	// visibility: hidden;
+}
+
+.cform-template {
+	padding: 3px;
+	box-sizing: border-box;
+	background-color: $background-color;
+	border: 1px solid $border-color;
+
+	cursor: pointer;
+
+	&:hover {
+		border-color: $hover-color;
+	}
+
+	&:focus,
+	&:active {
+		border-color: $hover-color;
+		outline: 0;
+	}
+}
+
+.cform-text input{
+	@extend .cform-template;
+	padding:5px 10px;
+	color: #000;
+}
+
+.cform-checkbox {
+	@extend .cform-template;
+
+	position: relative;	
 	display: inline-block;
-	width: 0; height: 0;
-	margin: 0; padding: 0;
-	border: 0; outline: 0;	
+	width: 18px; height: 18px;
+	box-sizing: border-box;
+
+	cursor: pointer;
+
+	.marker {
+		display: none;
+		width:10px; height: 10px;
+		background-color: $marker-color;
+	}
+
+	&.checked {
+		.marker {
+			display: block;
+		}
+	}
 }

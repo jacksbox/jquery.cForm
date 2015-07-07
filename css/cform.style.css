@@ -1,10 +1,44 @@
-/* line 5, ../scss/cform.style.scss */
-.cform-hidden {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
+/* line 14, ../scss/cform.style.scss */
+.cform-template, .cform-text input, .cform-checkbox {
+  padding: 3px;
+  box-sizing: border-box;
+  background-color: #dddddd;
+  border: 1px solid #333333;
+  cursor: pointer;
+}
+/* line 22, ../scss/cform.style.scss */
+.cform-template:hover, .cform-text input:hover, .cform-checkbox:hover {
+  border-color: #0066ff;
+}
+/* line 27, ../scss/cform.style.scss */
+.cform-template:focus, .cform-text input:focus, .cform-checkbox:focus, .cform-template:active, .cform-text input:active, .cform-checkbox:active {
+  border-color: #0066ff;
   outline: 0;
+}
+
+/* line 33, ../scss/cform.style.scss */
+.cform-text input {
+  padding: 5px 10px;
+  color: #000;
+}
+
+/* line 39, ../scss/cform.style.scss */
+.cform-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+/* line 49, ../scss/cform.style.scss */
+.cform-checkbox .marker {
+  display: none;
+  width: 10px;
+  height: 10px;
+  background-color: #0066ff;
+}
+/* line 56, ../scss/cform.style.scss */
+.cform-checkbox.checked .marker {
+  display: block;
 }

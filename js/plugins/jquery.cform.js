@@ -26,10 +26,11 @@
         };
         
         // converts inout fields
-        base.convertInput = function(node){
-        	var type = node.attr('type'),
-        		name = node.attr('name'),
-        		value = node.attr('value'),
+        base.convertInput = function($node){
+        	var type = $node.attr('type'),
+        		name = $node.attr('name'),
+        		value = $node.attr('value'),
+        		checked = $node.attr('checked'),
         		template = '',
         		$html = $();
 
@@ -43,22 +44,66 @@
 			if (typeof value === typeof undefined && value === false) {
 				value = '';
 			}
+			if (typeof checked === typeof undefined && checked === false) {
+				checked = '';
+			}
 
+			template = $.cForm.defaultOptions.templates[type];
 
 			switch(type) {
 			    case 'password':
 			    case 'text':
+			    	$node.wrap(template);
 			        break;
 			    case 'checkbox':
+			    	$html = $(template.replace('{{name}}',name).replace('{{value}}',value));
+
+			    	// checkbox checked?
+			    	if(checked || checked === 'checked'){
+			    		$html.addClass('checked')
+			    			.data('checked', true);
+			    	}
+
+			    	// bind the click behaviour
+			    	$html.bind('click', {$origin: $node},function(event){
+			    		var $node = $(this),
+			    			$origin = event.data.$origin,
+			    			checked = $node.data('checked');
+
+			    		if(checked){
+			    			$origin.prop('checked', false);
+			    			$node.removeClass('checked')
+			    				.data('checked', false);
+			    		}else{
+			    			$origin.prop('checked', true);
+			    			$node.addClass('checked')
+			    				.data('checked', true);
+			    		}
+			    	});
+
+			    	// let you change the value of the checkbox via js
+			    	$node.bind('change', {$mirror: $html}, function(event){
+			    		var $node = $(this),
+			    			$mirror = event.data.$mirror;
+
+			    		if($node.prop('checked')){
+			    			$mirror.addClass('checked')
+			    				.data('checked', true);
+			    		}else{
+							$mirror.removeClass('checked')
+			    				.data('checked', false);
+			    		}
+			    	});
 			        break;
 			    case 'radio':
 			        break;
 			    case 'submit':
 			        break;
 			    default:
-					console.log('Error: No matching type was found - You will be forever alone!');
+					console.log('Error: No matching was found - You will be forever alone!');
 			}
 			
+			$node.addClass('cform-hidden').after($html);
         };
 
         base.tagName = function($element) {
@@ -70,6 +115,16 @@
     };
     
     $.cForm.defaultOptions = {
+    	templates:		{
+    		text:      	'<div class="cform-text"></div>',
+    		password:   '<div class="cform-text cform-password"></div>',
+    		checkbox:	'<div class="cform-checkbox" data-name="{{name}}" data-value="{{value}}">\
+    						<div class="marker"></div>\
+    					</div>',
+    		radio:		'<div class="cform-radio" data-name="{{name}}" data-value="{{value}}">\
+    						<div class="marker"></div>\
+    					</div>',
+    	}
     };
     
     $.fn.cForm = function(options){

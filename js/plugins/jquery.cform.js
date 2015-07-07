@@ -1,0 +1,4 @@
+(function($) {
+    $.cForm = function() {
+  };
+})(jQuery);

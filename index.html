@@ -3,11 +3,116 @@
 	<head>
 		<title>jQuery cForms development</title>
 
-		<link src="css/cforms.style.css">
+		<link href="css/cforms.style.css" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		Hello World!
-		
+		<div class="wrapper">
+			<form>
+				<div class="row">
+					<strong> INSERT SPECIAL OPTIONS FOR SPECIAL TYPES // DONT FORGET PASSWORD </strong>
+				</div>
+				<div class="row">
+					<h2>Input Field</h2>
+					<div class="col33">
+						<label>input-text</label>
+						<input type="text" name="input-text">
+					</div>
+					<div class="col33">
+						<label>input-text // placeholder</label>
+						<input type="text" name="input-text" placeholder="placeholder">
+					</div>
+					<div class="col33">
+						<label>input-text // value</label>
+						<input type="text" name="input-text" value="value">
+					</div>
+				</div>
+				<div class="row">
+					<h2>Checkboxes</h2>
+					<div class="col33">
+						<label>checkbox-01 // value-01 // checked</label>
+						<input type="checkbox" value="value-01" name="checkbox-01" checked="checked">
+					</div>
+					<div class="col33">
+						<label>checkbox-02 // value-02</label>
+						<input type="checkbox" value="value-02" name="checkbox-01">
+					</div>
+					<div class="col33">
+						<label>checkbox-03 // value-03</label>
+						<input type="checkbox" value="value-03" name="checkbox-01">
+					</div>						
+				</div>
+				<div class="row">
+					<h2>Radio-Buttons</h2>
+					<div class="col33">
+						<label>radio-01 // value-01 // selected</label>
+						<input type="radio" value="value-01" name="radio-01" checked="checked">
+					</div>
+					<div class="col33">
+						<label>radio-01 // value-02</label>
+						<input type="radio" value="value-02" name="radio-01">
+					</div>
+					<div class="col33">
+						<label>radio-01 // value-02</label>
+						<input type="radio" value="value-03" name="radio-01">
+					</div>
+				</div>
+				<div class="row">
+					<h2>Select</h2>
+					<div class="col33">
+						<label>select-01 // default</label>
+						<select name="select-01">
+							<option value="value-01">value-01</option>
+							<option value="value-02">value-02</option>
+							<option value="value-03">value-03</option>
+						</select>
+					</div>
+					<div class="col33">
+						<label>select-02 // selected // value-02</label>
+						<select name="select-02">
+							<option value="value-01">value-01</option>
+							<option value="value-02" selected="selected">value-02</option>
+							<option value="value-03">value-03</option>
+						</select>
+					</div>
+					<div class="col33">
+						<label>select-03 // selected // value-02 // multiple</label>
+						<select name="select-03" multiple>
+							<option value="value-01">value-01</option>
+							<option value="value-02" selected="selected">value-02</option>
+							<option value="value-03">value-03</option>
+						</select>
+					</div>
+				</div>				
+				<div class="row">
+					<h2>Textarea</h2>
+					<div class="col33">
+						<label>textarea</label>
+						<textarea name="textarea" rows="3"></textarea>
+					</div>					
+					<div class="col33">
+						<label>input-password</label>
+						<input type="password" name="input-password">
+					</div>					
+					<div class="col33">
+						<label>input-password // placeholder</label>
+						<input type="password" name="input-password" placeholder="placeholder">
+					</div>
+				</div>				
+				<div class="row">
+					<h2>Buttons</h2>
+					<div class="col33">
+						<label>button // submit</label>
+						<button type="button" value="submit" name="button">click</button>
+					</div>
+					<div class="col33">
+						<label>input-submit // submit</label>
+						<input type="submit" value="submit" name="input-submit">
+					</div>
+				</div>
+			</form>
+		</div>
+
 		<script src="js/libs/jquery-2.1.4.min.js"></script>
 		<script src="js/plugins/jquery.cforms.js"></script>
 		<script src="js/main.js"></script>

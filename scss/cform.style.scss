@@ -42,7 +42,9 @@ $list-bg-color:			#aaa;
 	padding:5px 10px; margin: 0;
 	background-color: $control-bg-color;
 	border: 1px solid $control-bg-color;
+	box-sizing: border-box;
 
+	text-align: center;
 	font-size: $control-font-size;
 
 	color: #fff;
@@ -63,6 +65,26 @@ $list-bg-color:			#aaa;
 .cform-button {
 	button {
 		@extend .cform-control-template;
+	}
+}
+
+.cform-file {
+	position: relative;
+
+	.cform-control {
+		@extend .cform-control-template;
+
+		width:120px;
+	
+	}
+	.cform-filename {
+		@extend .cform-template;
+
+		position: absolute;
+		top: 0; bottom: 0; left: 120px; right: 0;
+		padding-left: 10px;
+		line-height: 2em;
+		font-size: 0.75em;
 	}
 }
 

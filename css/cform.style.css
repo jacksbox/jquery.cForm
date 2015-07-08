@@ -1,5 +1,5 @@
 /* line 22, ../scss/cform.style.scss */
-.cform-template, .cform-text input, .cform-text textarea, .cform-checkbox, .cform-select, .cform-multiselect {
+.cform-template, .cform-file .cform-filename, .cform-text input, .cform-text textarea, .cform-checkbox, .cform-select, .cform-multiselect {
   padding: 3px;
   margin: 0;
   box-sizing: border-box;
@@ -8,43 +8,65 @@
   cursor: pointer;
 }
 /* line 30, ../scss/cform.style.scss */
-.cform-template:hover, .cform-text input:hover, .cform-text textarea:hover, .cform-checkbox:hover, .cform-select:hover, .cform-multiselect:hover {
+.cform-template:hover, .cform-file .cform-filename:hover, .cform-text input:hover, .cform-text textarea:hover, .cform-checkbox:hover, .cform-select:hover, .cform-multiselect:hover {
   border-color: #0066ff;
 }
 /* line 35, ../scss/cform.style.scss */
-.cform-template:focus, .cform-text input:focus, .cform-text textarea:focus, .cform-checkbox:focus, .cform-select:focus, .cform-multiselect:focus, .cform-template:active, .cform-text input:active, .cform-text textarea:active, .cform-checkbox:active, .cform-select:active, .cform-multiselect:active {
+.cform-template:focus, .cform-file .cform-filename:focus, .cform-text input:focus, .cform-text textarea:focus, .cform-checkbox:focus, .cform-select:focus, .cform-multiselect:focus, .cform-template:active, .cform-file .cform-filename:active, .cform-text input:active, .cform-text textarea:active, .cform-checkbox:active, .cform-select:active, .cform-multiselect:active {
   border-color: #0066ff;
   outline: 0;
 }
 
 /* line 41, ../scss/cform.style.scss */
-.cform-control-template, .cform-submit input, .cform-button button, .cform-select .cform-control {
+.cform-control-template, .cform-submit input, .cform-button button, .cform-file .cform-control, .cform-select .cform-control {
   padding: 5px 10px;
   margin: 0;
   background-color: #333333;
   border: 1px solid #333333;
+  box-sizing: border-box;
+  text-align: center;
   font-size: 1em;
   color: #fff;
   cursor: pointer;
 }
-/* line 52, ../scss/cform.style.scss */
-.cform-control-template:hover, .cform-submit input:hover, .cform-button button:hover, .cform-select .cform-control:hover {
+/* line 54, ../scss/cform.style.scss */
+.cform-control-template:hover, .cform-submit input:hover, .cform-button button:hover, .cform-file .cform-control:hover, .cform-select .cform-control:hover {
   background-color: #0066ff;
   outline: 0;
 }
 
 /* line 71, ../scss/cform.style.scss */
+.cform-file {
+  position: relative;
+}
+/* line 74, ../scss/cform.style.scss */
+.cform-file .cform-control {
+  width: 120px;
+}
+/* line 80, ../scss/cform.style.scss */
+.cform-file .cform-filename {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 120px;
+  right: 0;
+  padding-left: 10px;
+  line-height: 2em;
+  font-size: 0.75em;
+}
+
+/* line 93, ../scss/cform.style.scss */
 .cform-text input {
   padding: 5px 10px;
   color: #000;
 }
-/* line 76, ../scss/cform.style.scss */
+/* line 98, ../scss/cform.style.scss */
 .cform-text textarea {
   padding: 5px 10px;
   color: #000;
 }
 
-/* line 83, ../scss/cform.style.scss */
+/* line 105, ../scss/cform.style.scss */
 .cform-checkbox {
   position: relative;
   display: inline-block;
@@ -53,25 +75,25 @@
   box-sizing: border-box;
   cursor: pointer;
 }
-/* line 93, ../scss/cform.style.scss */
+/* line 115, ../scss/cform.style.scss */
 .cform-checkbox .cform-marker {
   display: none;
   width: 10px;
   height: 10px;
   background-color: #0066ff;
 }
-/* line 100, ../scss/cform.style.scss */
+/* line 122, ../scss/cform.style.scss */
 .cform-checkbox.checked .cform-marker {
   display: block;
 }
 
-/* line 106, ../scss/cform.style.scss */
+/* line 128, ../scss/cform.style.scss */
 .cform-select {
   padding: 0;
   position: relative;
   border: none;
 }
-/* line 117, ../scss/cform.style.scss */
+/* line 139, ../scss/cform.style.scss */
 .cform-select ul {
   position: absolute;
   top: 100%;
@@ -91,30 +113,30 @@
   -o-transition: all 0.5s linear;
   transition: all 0.5s linear;
 }
-/* line 135, ../scss/cform.style.scss */
+/* line 157, ../scss/cform.style.scss */
 .cform-select ul li {
   padding: 4px 8px;
 }
-/* line 138, ../scss/cform.style.scss */
+/* line 160, ../scss/cform.style.scss */
 .cform-select ul li.selected {
   color: #fff;
   background-color: #0066ff;
 }
-/* line 142, ../scss/cform.style.scss */
+/* line 164, ../scss/cform.style.scss */
 .cform-select ul li:hover {
   color: #000;
   background-color: #aaaaaa;
 }
-/* line 150, ../scss/cform.style.scss */
+/* line 172, ../scss/cform.style.scss */
 .cform-select:hover ul {
   max-height: 1000px;
 }
 
-/* line 156, ../scss/cform.style.scss */
+/* line 178, ../scss/cform.style.scss */
 .cform-multiselect {
   padding: 0;
 }
-/* line 160, ../scss/cform.style.scss */
+/* line 182, ../scss/cform.style.scss */
 .cform-multiselect ul {
   margin: 0;
   padding: 0;
@@ -127,16 +149,16 @@
   -o-transition: all 0.5s linear;
   transition: all 0.5s linear;
 }
-/* line 172, ../scss/cform.style.scss */
+/* line 194, ../scss/cform.style.scss */
 .cform-multiselect ul li {
   padding: 4px 8px;
 }
-/* line 175, ../scss/cform.style.scss */
+/* line 197, ../scss/cform.style.scss */
 .cform-multiselect ul li.selected {
   color: #fff;
   background-color: #0066ff;
 }
-/* line 179, ../scss/cform.style.scss */
+/* line 201, ../scss/cform.style.scss */
 .cform-multiselect ul li:hover {
   color: #000;
   background-color: #aaaaaa;

@@ -82,6 +82,19 @@
 			    	$node.wrap(template);
 			        break;
 			    case 'file':
+					$html = $(template.replace('{{name}}',name));
+	
+					$html.bind('click', {$node: $node},function (event) {
+						var $node = event.data.$node;
+							$node.trigger('click');
+					});
+
+					$node.bind('change', {$html: $html},function (event) {
+						var filename = $(this).val().split('\\').pop(),
+							$html = event.data.$html;
+						
+						$html.addClass('filled').find('.cform-filename').text(filename);
+					});
 			    	break;
 			    case 'checkbox':
 			    	$html = $(template.replace('{{name}}',name));
@@ -298,6 +311,10 @@
     		text:      		'<div class="cform-text"></div>',
     		textarea:      	'<div class="cform-text"></div>',
     		password:   	'<div class="cform-text cform-password"></div>',
+    		file:   	'<div class="cform-file" data-name="{{name}}">\
+    							<div class="cform-control">choose file</div>\
+    							<div class="cform-filename"> here</div>\
+    						</div>',
     		checkbox:		'<div class="cform-checkbox" data-name="{{name}}">\
     							<div class="cform-marker"></div>\
     						</div>',

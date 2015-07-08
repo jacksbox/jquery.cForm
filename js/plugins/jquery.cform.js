@@ -1,3 +1,14 @@
+/*!
+ * jQuery cForms v0.4
+ * http://cforms.jacksbox.de
+ *
+ * Author: Mario Jäckle
+ * eMail: support@jacksbox.de
+ *
+ * Copyright 2015, jacksbox.design
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
 (function($){
     $.cForm = function(element, options){
         var base = this;
@@ -11,6 +22,8 @@
         
         base.init = function(){
             base.options = $.extend({},$.cForm.defaultOptions, options);
+            base.options.templates = $.extend({},$.cForm.defaultOptions.templates, options.templates);
+
 
             // elements which will be styled
             var filter = ['input', 'textarea', 'select', 'button'];
@@ -49,7 +62,7 @@
 		 * @param  {object} $node jQuery-Element // BUTTON
 		 */
         base.handleButton = function($node) {
-        	var template = $.cForm.defaultOptions.templates['button'];
+        	var template = base.options.templates['button'];
         	$node.wrap(template);
         };
 
@@ -59,7 +72,7 @@
 		 * @param  {object} $node jQuery-Element // TEXTAREA
 		 */
         base.handleTextarea = function($node) {
-        	var template = $.cForm.defaultOptions.templates['textarea'];
+        	var template = base.options.templates['textarea'];
         	$node.wrap(template);
         };
         
@@ -91,7 +104,7 @@
 				checked = '';
 			}
 
-			template = $.cForm.defaultOptions.templates[type];
+			template = base.options.templates[type];
 
 			switch(type) {
 			    case 'password':
@@ -292,12 +305,12 @@
 			}
 			if (typeof multiple === typeof undefined || multiple === false) {
 				multiple = false;
-				template = $.cForm.defaultOptions.templates['select'];
+				template = base.options.templates['select'];
 				$html = $(template.replace('{{name}}', name)
 							.replace('{{text}}', $selected.html()));
 			}else{
 				multiple = true;
-				template = $.cForm.defaultOptions.templates['multiselect'];
+				template = base.options.templates['multiselect'];
 				$html = $(template.replace('{{name}}', name));
 			}
 
@@ -305,7 +318,7 @@
 			$subnodes.each(function(index){
 				var $node = $(this),
 					cssclass = $node.prop('selected')?'selected':'',
-					template = $.cForm.defaultOptions.templates['option'];
+					template = base.options.templates['option'];
 
 				template = template.replace('{{value}}', $node.val())
 								.replace('{{text}}', $node.html());

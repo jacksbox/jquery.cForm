@@ -1,7 +1,14 @@
+@import "compass/css3";
+@import "compass/utilities";
+
 $background-color: 		#dddddd;
 $border-color: 			#333333;
 $marker-color:			#0066FF;
 $hover-color:			#0066FF;
+
+$control-bg-color:		#333333;
+
+$list-bg-color:			#aaa;
 
 .cform-hidden {
 	// display: inline-block;
@@ -27,6 +34,17 @@ $hover-color:			#0066FF;
 	&:active {
 		border-color: $hover-color;
 		outline: 0;
+	}
+}
+
+.cform-control-template {
+	padding:5px 10px;
+	background-color: $control-bg-color;
+
+	color: #fff;
+
+	&:hover {
+		background-color: $control-bg-color;
 	}
 }
 
@@ -61,21 +79,80 @@ $hover-color:			#0066FF;
 
 .cform-select {
 	@extend .cform-template;
+	padding: 0;
 
 	position: relative;
+	border: none;
+
+	.cform-control {
+		@extend .cform-control-template;
+	}
 
 	ul {
 		position: absolute;
-		top: 100%; left:0px;
+		top: 100%; left: -1px; // -1px because of border
+		margin: 0; padding: 0;
+		width: 100%;
+		max-height: 0px;
+
+		list-style: none;
+
+		overflow: hidden;
+
+		background-color: $background-color;
+		border-left: 1px solid $background-color;
+		border-bottom: 1px solid $background-color;
+		border-right: 1px solid $background-color;
+	
+		@include transition(all .5s linear); 
+
+		li {
+			padding: 4px 8px;
+
+			&.selected {
+				color: #fff;
+				background-color: $hover-color;
+			}
+			&:hover {
+				color: #000;
+				background-color: $list-bg-color;
+			}
+		}
+	}
+
+	&:hover {
+		ul {
+			max-height: 1000px;
+		}
+	}
+}
+
+.cform-multiselect {
+	@extend .cform-template;
+	padding: 0;
+
+	ul {
 		margin: 0; padding: 0;
 		width: 100%;
 
 		list-style: none;
 
+		overflow: hidden;
+
+		background-color: $background-color;
+	
+		@include transition(all .5s linear); 
+
 		li {
+			padding: 4px 8px;
 
 			&.selected {
-				border: 1px solid red;
+				color: #fff;
+				background-color: $hover-color;
+			}
+			&:hover {
+				color: #000;
+				background-color: $list-bg-color;
 			}
 		}
 	}

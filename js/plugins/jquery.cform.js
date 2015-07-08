@@ -184,12 +184,16 @@
 			    	);
 			        break;
 			    case 'radio':
+			    	// for each radio group (= same name) 
+			    	// we want do this just once!
 			    	if(base.radioGroupArray.indexOf(name) > -1){
 			    		break;
 			    	}
 			    	base.radioGroupArray.push(name);
 			    	var $mirrors = $();
 
+			    	// get all radios with the same name and iterate
+			    	// create html and insert, also hide the original
 			    	$nodes = base.$element.find('input[type="radio"][name="' + name + '"]');
 			    	$nodes.each(function(){
 			    		var $node = $(this),
@@ -205,6 +209,8 @@
 						$node.addClass('hidden').after($html);
 			    	});
 
+			    	// when a cForm radio gets clicked, change its style/values
+			    	// change the original radio as well
 					$mirrors.bind(
 						'click', 
 						{
@@ -229,6 +235,8 @@
 						}
 					);
 
+			    	// when the original radio group gets changed via js or other means
+			    	// update the cForm radio group as well
 					$nodes.bind(
 						'change', 
 						{

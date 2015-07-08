@@ -128,7 +128,7 @@
 					);
 			    	break;
 			    case 'checkbox':
-			    	$html = $(template.replace('{{name}}',name));
+			    	$html = $(template.replace('{{name}}',name).replace('{{value}}',value));
 
 			    	if(checked || checked === 'checked'){
 			    		$html.addClass('checked')
@@ -370,7 +370,7 @@
     							<div class="cform-control">choose file</div>\
     							<div class="cform-filename"> here</div>\
     						</div>',
-    		checkbox:		'<div class="cform-checkbox" data-name="{{name}}">\
+    		checkbox:		'<div class="cform-checkbox" data-name="{{name}}" data-value="{{value}}">\
     							<div class="cform-marker"></div>\
     						</div>',
     		radio:			'<div class="cform-radio" data-name="{{name}}">\

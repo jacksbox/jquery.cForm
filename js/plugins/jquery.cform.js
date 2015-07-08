@@ -21,9 +21,8 @@
         base.$element.data("cForm", base);
         
         base.init = function(){
-            base.options = $.extend({},$.cForm.defaultOptions, options);
-            base.options.templates = $.extend({},$.cForm.defaultOptions.templates, options.templates);
-
+            base.options = $.extend({},$.cForm.defaultOptions, base.options);
+           	base.options.templates = $.extend({},$.cForm.defaultOptions.templates, base.options.templates);
 
             // elements which will be styled
             var filter = ['input', 'textarea', 'select', 'button'];
@@ -142,6 +141,8 @@
 									.text(filename);
 						}
 					);
+			
+					base.addToDom($node, $html);
 			    	break;
 			    case 'checkbox':
 			    	$html = $(template.replace('{{name}}',name).replace('{{value}}',value));
@@ -195,6 +196,8 @@
 			    			}
 			    		}
 			    	);
+			
+					base.addToDom($node, $html);
 			        break;
 			    case 'radio':
 			    	// for each radio group (= same name) 
@@ -219,7 +222,7 @@
 						checked && $html.addClass('checked').data('checked', 'true');
 
 						$mirrors = $mirrors.add($html);
-						$node.addClass('hidden').after($html);
+						$node.addClass('cform-hidden').after($html);
 			    	});
 
 			    	// when a cForm radio gets clicked, change its style/values
@@ -271,6 +274,8 @@
 									.addClass('checked');
 						}
 					);
+			
+					base.addToDom($node, $html);
 			        break;
 			    case 'submit':
 			    	$node.wrap(template);
@@ -278,8 +283,6 @@
 			    default:
 					console.log('Error: No matching was found - You will be forever alone!');
 			}
-			
-			base.addToDom($node, $html);
         };
 
        	/**
@@ -458,7 +461,7 @@
     		password:   	'<div class="cform-text cform-password"></div>',
     		file:   		'<div class="cform-file" data-name="{{name}}">\
     							<div class="cform-control">choose file</div>\
-    							<div class="cform-filename"> here</div>\
+    							<div class="cform-filename"> click here</div>\
     						</div>',
     		checkbox:		'<div class="cform-checkbox" data-name="{{name}}" data-value="{{value}}">\
     							<div class="cform-marker"></div>\

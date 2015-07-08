@@ -1,0 +1,257 @@
+/* line 13, ../scss/demo.scss */
+body, html {
+  font-family: 'Droid Sans', Helvetica, Arial, Sans-Serif;
+  color: #2a3741;
+  font-size: 1em;
+}
+
+/* line 20, ../scss/demo.scss */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+/* line 25, ../scss/demo.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 29, ../scss/demo.scss */
+.clearfix {
+  zoom: 1;
+  /* ie 6/7 */
+}
+
+/* line 33, ../scss/demo.scss */
+.center {
+  position: relative;
+  margin: 0 auto;
+  width: 1000px;
+}
+
+/* line 39, ../scss/demo.scss */
+header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 40px;
+  background: #2a3741;
+  border-top: 4px solid #529632;
+  z-index: 9999;
+  -webkit-box-shadow: 0px 0px 4px 0px #2a5170;
+  -moz-box-shadow: 0px 0px 4px 0px #2a5170;
+  box-shadow: 0px 0px 4px 0px #2a5170;
+}
+/* line 51, ../scss/demo.scss */
+header h1 {
+  font-weight: normal;
+  line-height: 38px;
+  font-size: 20px;
+  color: #fff;
+  margin: 0;
+}
+/* line 58, ../scss/demo.scss */
+header h1 small {
+  opacity: .5;
+}
+/* line 63, ../scss/demo.scss */
+header ul {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-right: 1px solid #2a5170;
+}
+/* line 71, ../scss/demo.scss */
+header ul li {
+  padding: 10px 30px;
+  height: 40px;
+  box-sizing: border-box;
+  float: left;
+  border-left: 1px solid #2a5170;
+  cursor: pointer;
+  background: #2a3741;
+  -webkit-transition: background-color 0.5s linear;
+  -moz-transition: background-color 0.5s linear;
+  -o-transition: background-color 0.5s linear;
+  transition: background-color 0.5s linear;
+}
+/* line 86, ../scss/demo.scss */
+header ul li a {
+  color: white;
+  text-decoration: none;
+}
+/* line 18, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li a:visited {
+  color: white;
+}
+/* line 21, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li a:focus {
+  color: white;
+}
+/* line 24, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li a:hover {
+  color: white;
+}
+/* line 27, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li a:active {
+  color: white;
+}
+/* line 91, ../scss/demo.scss */
+header ul li:hover {
+  background: #2a5170;
+}
+/* line 94, ../scss/demo.scss */
+header ul li:hover a {
+  color: white;
+}
+/* line 18, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li:hover a:visited {
+  color: white;
+}
+/* line 21, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li:hover a:focus {
+  color: white;
+}
+/* line 24, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li:hover a:hover {
+  color: white;
+}
+/* line 27, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+header ul li:hover a:active {
+  color: white;
+}
+
+/* line 102, ../scss/demo.scss */
+#about {
+  margin-top: 120px;
+  line-height: 1.5em;
+}
+/* line 106, ../scss/demo.scss */
+#about h2 {
+  margin: 0 0 10px 0;
+  font-size: 2em;
+  border: none;
+}
+/* line 111, ../scss/demo.scss */
+#about h3 {
+  margin: 0 0 20px 0;
+  font-weight: normal;
+  color: #2a3741;
+  opacity: .5;
+}
+
+/* line 119, ../scss/demo.scss */
+section {
+  margin-bottom: 80px;
+  z-index: 9000;
+}
+/* line 124, ../scss/demo.scss */
+section h2 {
+  color: #2a3741;
+  border-bottom: 1px solid #1162a0;
+}
+/* line 128, ../scss/demo.scss */
+section h3 {
+  font-weight: normal;
+  font-size: 1.2em;
+  color: #2a5170;
+}
+/* line 134, ../scss/demo.scss */
+section label {
+  display: block;
+  margin: 0 0 10px 0;
+  color: #2a3741;
+}
+/* line 141, ../scss/demo.scss */
+section .row {
+  margin-bottom: 20px;
+}
+/* line 145, ../scss/demo.scss */
+section .col25 {
+  box-sizing: border-box;
+  width: 25%;
+  padding: 0 10px;
+  float: left;
+}
+/* line 153, ../scss/demo.scss */
+section .col50 {
+  box-sizing: border-box;
+  width: 50%;
+  padding: 0 10px;
+  float: left;
+}
+/* line 162, ../scss/demo.scss */
+section .checkbox-wrapper,
+section .radio-wrapper {
+  margin-bottom: 10px;
+  zoom: 1;
+  /* ie 6/7 */
+}
+/* line 166, ../scss/demo.scss */
+section .checkbox-wrapper .cform-checkbox,
+section .checkbox-wrapper .cform-radio,
+section .radio-wrapper .cform-checkbox,
+section .radio-wrapper .cform-radio {
+  float: left;
+}
+/* line 170, ../scss/demo.scss */
+section .checkbox-wrapper label,
+section .radio-wrapper label {
+  display: inline-block;
+  height: 18px;
+  margin: 0 0 0 10px;
+}
+/* line 177, ../scss/demo.scss */
+section .checkbox-wrapper:before, section .checkbox-wrapper:after,
+section .radio-wrapper:before,
+section .radio-wrapper:after {
+  content: "";
+  display: table;
+}
+/* line 181, ../scss/demo.scss */
+section .checkbox-wrapper:after,
+section .radio-wrapper:after {
+  clear: both;
+}
+/* line 187, ../scss/demo.scss */
+section textarea {
+  width: 100%;
+}
+
+/* line 192, ../scss/demo.scss */
+footer {
+  padding: 20px 25%;
+  border-top: 1px solid #1162a0;
+  text-align: center;
+  line-height: 1.5em;
+}
+/* line 199, ../scss/demo.scss */
+footer a {
+  color: #1162a0;
+  text-decoration: none;
+  -webkit-transition: color 0.25s linear;
+  -moz-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+/* line 18, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+footer a:visited {
+  color: #1162a0;
+}
+/* line 21, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+footer a:focus {
+  color: #1162a0;
+}
+/* line 24, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+footer a:hover {
+  color: #529632;
+}
+/* line 27, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+footer a:active {
+  color: #529632;
+}

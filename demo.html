@@ -1,0 +1,183 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>jQuery cForm Instructions & Demo</title>
+
+		<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/cform.style.css">
+		<link rel="stylesheet" type="text/css" href="css/demo.css">
+	</head>
+	<body>
+		<header>
+			<div class="center">
+				<h1>jQuery cForm <small> - custom styled form elements</small></h1>
+				<ul class="clearfix">
+				    <li><a href="#about">About</a></li>
+				    <li><a href="#demo">Demo</a></li>
+				    <li><a href="#usage">Usage</a></li>
+				</ul>
+			</div>
+		</header>
+		<div class="center">
+			<section id="about">
+				<a name="about"></a>
+				<h2>jQuery cForm</h2>
+				<h3>a jQuery Plugin for custom styled form elements</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				</p>
+			</section>
+			<section id="demo" class="cform">
+				<a name="demo"></a>
+				<h2>Demo</h2>
+
+				<div class="row clearfix">
+					<h3>input: "text" & "password"</h3>
+					<div class="col25">
+						<label>standard input</label>
+						<input type="text" name="input-text">
+					</div>
+					<div class="col25">
+						<label>input with placeholder</label>
+						<input type="text" name="input-placeholder" placeholder="type here">
+					</div>
+					<div class="col25">
+						<label>input with value</label>
+						<input type="text" name="input-value" value="some text">
+					</div>
+					<div class="col25">
+						<label>password</label>
+						<input type="password" name="input-password">
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<h3>input: "checkbox" & "radio"</h3>
+					<div class="col25">
+						<div class="checkbox-wrapper">
+							<input type="checkbox" value="value-01" name="checkbox-01" checked="checked"> <label>label</label>
+						</div>
+						<div class="checkbox-wrapper">
+							<input type="checkbox" value="value-02" name="checkbox-02"> <label>label</label>
+						</div>
+						<div class="checkbox-wrapper">
+							<input type="checkbox" value="value-03" name="checkbox-03" checked="checked"> <label>label</label>
+						</div>
+						<div class="checkbox-wrapper">
+							<input type="checkbox" value="value-04" name="checkbox-04"> <label>label</label>
+						</div>
+					</div>
+					<div class="col25">
+						<div class="radio-wrapper">
+							<input type="radio" value="value-01" name="radio-01" checked="checked"> <label>radio group 1</label>
+						</div>
+						<div class="radio-wrapper">
+							<input type="radio" value="value-02" name="radio-01"> <label>radio group 1</label>
+						</div>
+						<div class="radio-wrapper">
+							<input type="radio" value="value-03" name="radio-01"> <label>radio group 1</label>
+						</div>
+						<div class="radio-wrapper">
+							<input type="radio" value="value-04" name="radio-01"> <label>radio group 1</label>
+						</div>
+					</div>
+					<div class="col25">
+						<div class="radio-wrapper">
+							<input type="radio" value="value-01" name="radio-02"> <label>radio group 2</label>
+						</div>
+						<div class="radio-wrapper">
+							<input type="radio" value="value-02" name="radio-02"> <label>radio group 2</label>
+						</div>
+						<div class="radio-wrapper">
+							<input type="radio" value="value-03" name="radio-02"> <label>radio group 2</label>
+						</div>
+						<div class="radio-wrapper">
+							<input type="radio" value="value-04" name="radio-02" checked="checked"> <label>radio group 2</label>
+						</div>
+					</div>
+					<div class="col25">
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<h3>select:</h3>
+					<div class="col25">
+						<label>standard select</label>
+						<select name="select-01">
+							<option value="value-01">option 01</option>
+							<option value="value-02">option 02</option>
+							<option value="value-03">option 03</option>
+						</select>
+					</div>
+					<div class="col25">
+						<label>select pre-selected</label>
+						<select name="select-02">
+							<option value="value-01">option 01</option>
+							<option value="value-02" selected="selected">default option</option>
+							<option value="value-03">option 02</option>
+							<option value="value-03">option 03</option>
+							<option value="value-03">option 04</option>
+						</select>
+					</div>
+					<div class="col25">&nbsp;</div>
+					<div class="col25">
+						<label>select multiple</label>
+						<select name="select-03" multiple>
+							<option value="value-01">option 01</option>
+							<option value="value-02" selected="selected">option 02</option>
+							<option value="value-03" selected="selected">option 03</option>
+							<option value="value-03">option 04</option>
+							<option value="value-03">option 05</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<h3>textarea & file</h3>
+					<div class="col50">
+						<label>textarea</label>
+						<textarea name="textarea" rows="3"></textarea>
+					</div>
+					<div class="col25">&nbsp;</div>
+					<div class="col25">
+						<label>input file</label>
+						<input type="file" name="input-file">
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<h3>submit & button</h3>
+					<div class="col25">
+						<label>input submit</label>
+						<input type="submit" value="submit" name="input-submit">
+					</div>
+					<div class="col25">
+						<label>button</label>
+						<button type="button" value="submit" name="button">click</button>	
+					<div class="col25">
+					</div>
+					<div class="col25">
+					</div>
+				</div>
+			</section>
+			<section id="usage">
+				<a name="usage"></a>
+				<h2>Usage</h2>
+			</section>
+			<footer>
+				<a href="cform.jacksbox.de">jQuery cForm</a> | 
+				on <a href="cform.jacksbox.de">gitHub</a> | 
+				<a href="mailto: support@jacksbox.de">support@jacksbox.de</a> <br/>
+				by jacksbox.design | <a href="www.jacksbox.de">www.jacksbox.de</a>
+			</footer>
+		</div>
+
+		<script src="js/libs/jquery-2.1.4.min.js"></script>
+		<script src="js/plugins/jquery.cform.js"></script>
+		<script src="js/demo.js"></script>
+	</body>
+</html>

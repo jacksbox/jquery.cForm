@@ -46,15 +46,37 @@ $hover-color:			#0066FF;
 
 	cursor: pointer;
 
-	.marker {
+	.cform-marker {
 		display: none;
 		width:10px; height: 10px;
 		background-color: $marker-color;
 	}
 
 	&.checked {
-		.marker {
+		.cform-marker {
 			display: block;
+		}
+	}
+}
+
+.cform-select {
+	@extend .cform-template;
+
+	position: relative;
+
+	ul {
+		position: absolute;
+		top: 100%; left:0px;
+		margin: 0; padding: 0;
+		width: 100%;
+
+		list-style: none;
+
+		li {
+
+			&.selected {
+				border: 1px solid red;
+			}
 		}
 	}
 }

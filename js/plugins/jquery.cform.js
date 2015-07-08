@@ -1,7 +1,5 @@
 (function($){
     $.cForm = function(element, options){
-        // To avoid scope issues, use 'base' instead of 'this'
-        // to reference this class from internal events and functions.
         var base = this;
         
         // Access to jQuery and DOM versions of element
@@ -14,10 +12,11 @@
         base.init = function(){
             base.options = $.extend({},$.cForm.defaultOptions, options);
 
+            // elements which will be styled
             var filter = ['input', 'textarea', 'select', 'button'];
 
-            // Put your initialization code here
-            // INIT
+            // check if the called element a wrapper or a form-element
+            // invoce the corresponding functions
             if(base.$element.is(filter.join())){
             	var tag = base.tagName(base.$element);
 
@@ -41,17 +40,31 @@
             }
         };
 
+		/**
+		 * handles the BUTTON conversion
+		 * 
+		 * @param  {object} $node jQuery-Element // BUTTON
+		 */
         base.handleButton = function($node) {
         	var template = $.cForm.defaultOptions.templates['button'];
         	$node.wrap(template);
         };
 
+		/**
+		 * handles the TEXTAREA conversion
+		 * 
+		 * @param  {object} $node jQuery-Element // TEXTAREA
+		 */
         base.handleTextarea = function($node) {
         	var template = $.cForm.defaultOptions.templates['textarea'];
         	$node.wrap(template);
-        }
+        };
         
-        // converts input fields
+		/**
+		 * handles the INPUT conversion
+		 * 
+		 * @param  {object} $node jQuery-Element // INPUT
+		 */
         base.handleInput = function($node){
         	var type = $node.attr('type'),
         		name = $node.attr('name'),
@@ -60,6 +73,7 @@
         		template = '',
         		$html = $();
 
+        	// check for input type
             if (typeof type === typeof undefined && type === false) {
 				console.log('Error: Missing type-Attribute on input!');
 				return false;
@@ -84,28 +98,45 @@
 			    case 'file':
 					$html = $(template.replace('{{name}}',name));
 	
-					$html.bind('click', {$node: $node},function (event) {
-						var $node = event.data.$node;
-							$node.trigger('click');
-					});
+			    	// when the cForm file button gets clicked
+			    	// trigger the original file button
+					$html.bind('click', 
+						{
+							$node: $node
+						},
+						function (event) {
+							var $node = event.data.$node;
+								$node.trigger('click');
+						}
+					);
 
-					$node.bind('change', {$html: $html},function (event) {
-						var filename = $(this).val().split('\\').pop(),
-							$html = event.data.$html;
+					// when the original file input gets changed (gets a file)
+					// update the cForm file input as well
+					$node.bind(
+						'change', 
+						{
+							$html: $html
+						},
+						function (event) {
+							var filename = $(this).val().split('\\').pop(),
+								$html = event.data.$html;
 						
-						$html.addClass('filled').find('.cform-filename').text(filename);
-					});
+							$html.addClass('filled')
+								.find('.cform-filename')
+									.text(filename);
+						}
+					);
 			    	break;
 			    case 'checkbox':
 			    	$html = $(template.replace('{{name}}',name));
 
-			    	// checkbox checked?
 			    	if(checked || checked === 'checked'){
 			    		$html.addClass('checked')
 			    			.data('checked', true);
 			    	}
 
-			    	// bind the click behaviour
+			    	// when the cForm checkbox gets clicked, change its style/values
+			    	// change the original checkbox as well
 			    	$html.bind(
 			    		'click', 
 			    		{
@@ -128,7 +159,8 @@
 			    		}
 			    	);
 
-			    	// let you change the value of the checkbox via js
+			    	// when the original checkbox gets changed via js or other means
+			    	// update the cForm checkbox as well
 			    	$node.bind(
 			    		'change', 
 			    		{
@@ -160,7 +192,11 @@
 			base.addToDom($node, $html);
         };
 
-        // converts select fields
+       	/**
+		 * handles the SELECT conversion
+		 * 
+		 * @param  {object} $node jQuery-Element // SELECT
+		 */
         base.handleSelect = function($node){
         	var name = $node.attr('name'),
         		value = $node.attr('value'),
@@ -171,11 +207,11 @@
         		$options = $(),
         		$html = $();
 
-			if (typeof attr !== typeof undefined && attr !== false) {
-			    // ...
-			}
 			if (typeof name === typeof undefined && name === false) {
 				name = '';
+			}			
+			if (typeof value === typeof undefined && value === false) {
+				value = '';
 			}
 			if (typeof multiple === typeof undefined || multiple === false) {
 				multiple = false;
@@ -188,6 +224,7 @@
 				$html = $(template.replace('{{name}}', name));
 			}
 
+			// create and populate the option list
 			$subnodes.each(function(index){
 				var $node = $(this),
 					cssclass = $node.prop('selected')?'selected':'',
@@ -199,6 +236,8 @@
 				$options = $options.add($(template).addClass(cssclass));
 			});
 
+			// when a cForm select-option gets clicked, change its style/values
+			// change the original select/option as well
 			$options.bind(
 				'click', 
 				{
@@ -246,8 +285,8 @@
 				}
 			);
 
-			$html.find('ul').append($options);
-
+			// when the original select gets changed via js or other means
+			// update the cForm select/options as well
 			$node.bind(
 				'change', 
 				{
@@ -287,31 +326,47 @@
 					}
 				}
 			)
+
+			// adds the option-list-html to the cForm element
+			$html.find('ul').append($options);
+
 			base.addToDom($node, $html);
         };
 
+        /**
+         * adds an jQuery-Element to the DOM 
+         * and hides the connected element
+         * 
+         * @param {object} $node jQuery-Element (original)
+         * @param {object} $html Query-Element (cForm)
+         */
         base.addToDom = function($node, $html) {
 			$node.addClass('cform-hidden').after($html);
         };
 
+        /* *** HELPER *** */
+
+		/**
+		 * return the tag name of an html-tag (in lower-case)
+		 * 
+		 * @param  {string} $element html-tag as string
+		 * @return {string}          name of the html-tag
+		 */
         base.tagName = function($element) {
   			return $element.prop("tagName").toLowerCase();
 		};
-
-		base.createCheckbox = function() {
-
-		};
         
-        // Run initializer
+        /* *** RUN THE PLUGIN *** */
+
         base.init();
     };
     
     $.cForm.defaultOptions = {
-    	templates:		{
+    	templates:		{	// html templates for the differnet form fields
     		text:      		'<div class="cform-text"></div>',
     		textarea:      	'<div class="cform-text"></div>',
     		password:   	'<div class="cform-text cform-password"></div>',
-    		file:   	'<div class="cform-file" data-name="{{name}}">\
+    		file:   		'<div class="cform-file" data-name="{{name}}">\
     							<div class="cform-control">choose file</div>\
     							<div class="cform-filename"> here</div>\
     						</div>',

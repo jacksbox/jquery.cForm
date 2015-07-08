@@ -44,7 +44,6 @@ $list-bg-color:			#aaa;
 	border: 1px solid $control-bg-color;
 	box-sizing: border-box;
 
-	text-align: center;
 	font-size: $control-font-size;
 
 	color: #fff;
@@ -60,11 +59,13 @@ $list-bg-color:			#aaa;
 .cform-submit {
 	input {
 		@extend .cform-control-template;
+	text-align: center;
 	}
 }
 .cform-button {
 	button {
 		@extend .cform-control-template;
+	text-align: center;
 	}
 }
 
@@ -75,6 +76,7 @@ $list-bg-color:			#aaa;
 		@extend .cform-control-template;
 
 		width:120px;
+		text-align: center;
 	
 	}
 	.cform-filename {

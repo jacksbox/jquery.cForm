@@ -25,6 +25,19 @@
             	if(tag === 'select') 	base.handleSelect(base.$element);
             	if(tag === 'button') 	base.handleButton(base.$element);
             	if(tag === 'textarea') 	base.handleTextarea(base.$element);
+            } else {
+            	base.$element.find('input').each(function(){
+            		base.handleInput($(this));
+            	});
+            	base.$element.find('select').each(function(){
+            		base.handleSelect($(this));
+            	});
+            	base.$element.find('button').each(function(){
+            		base.handleButton($(this));
+            	});
+            	base.$element.find('textarea').each(function(){
+            		base.handleTextarea($(this));
+            	});
             }
         };
 

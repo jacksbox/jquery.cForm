@@ -6,6 +6,7 @@ $border-color: 			#333333;
 $marker-color:			#0066FF;
 $hover-color:			#0066FF;
 
+$control-font-size:		1em;
 $control-bg-color:		#333333;
 
 $list-bg-color:			#aaa;
@@ -19,7 +20,7 @@ $list-bg-color:			#aaa;
 }
 
 .cform-template {
-	padding: 3px;
+	padding: 3px; margin: 0;
 	box-sizing: border-box;
 	background-color: $background-color;
 	border: 1px solid $border-color;
@@ -38,20 +39,45 @@ $list-bg-color:			#aaa;
 }
 
 .cform-control-template {
-	padding:5px 10px;
+	padding:5px 10px; margin: 0;
 	background-color: $control-bg-color;
+	border: 1px solid $control-bg-color;
+
+	font-size: $control-font-size;
 
 	color: #fff;
+	cursor: pointer;
+
 
 	&:hover {
-		background-color: $control-bg-color;
+		background-color: $hover-color;
+		outline: 0;
 	}
 }
 
-.cform-text input{
-	@extend .cform-template;
-	padding:5px 10px;
-	color: #000;
+.cform-submit {
+	input {
+		@extend .cform-control-template;
+	}
+}
+.cform-button {
+	button {
+		@extend .cform-control-template;
+	}
+}
+
+
+.cform-text {
+	input{
+		@extend .cform-template;
+		padding:5px 10px;
+		color: #000;
+	}
+	textarea{
+		@extend .cform-template;
+		padding:5px 10px;
+		color: #000;
+	}
 }
 
 .cform-checkbox {

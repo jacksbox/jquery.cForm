@@ -21,10 +21,22 @@
             if(base.$element.is(filter.join())){
             	var tag = base.tagName(base.$element);
 
-            	if(tag === 'input') base.handleInput(base.$element);
-            	if(tag === 'select') base.handleSelect(base.$element);
+            	if(tag === 'input') 	base.handleInput(base.$element);
+            	if(tag === 'select') 	base.handleSelect(base.$element);
+            	if(tag === 'button') 	base.handleButton(base.$element);
+            	if(tag === 'textarea') 	base.handleTextarea(base.$element);
             }
         };
+
+        base.handleButton = function($node) {
+        	var template = $.cForm.defaultOptions.templates['button'];
+        	$node.wrap(template);
+        };
+
+        base.handleTextarea = function($node) {
+        	var template = $.cForm.defaultOptions.templates['textarea'];
+        	$node.wrap(template);
+        }
         
         // converts input fields
         base.handleInput = function($node){
@@ -111,6 +123,7 @@
 			    case 'radio':
 			        break;
 			    case 'submit':
+			    	$node.wrap(template);
 			        break;
 			    default:
 					console.log('Error: No matching was found - You will be forever alone!');
@@ -268,6 +281,7 @@
     $.cForm.defaultOptions = {
     	templates:		{
     		text:      		'<div class="cform-text"></div>',
+    		textarea:      	'<div class="cform-text"></div>',
     		password:   	'<div class="cform-text cform-password"></div>',
     		checkbox:		'<div class="cform-checkbox" data-name="{{name}}">\
     							<div class="cform-marker"></div>\
@@ -283,6 +297,8 @@
     							<ul></ul>\
     						</div>',
     		option: 		'<li data-value="{{value}}">{{text}}</li>',
+    		button: 		'<div class="cform-button"></div>',
+    		submit: 		'<div class="cform-submit"></div>',
     	}
     };
     

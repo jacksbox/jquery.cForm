@@ -1,0 +1,48 @@
+{
+    "name": "cform",
+    "title": "cForm",
+    "description": "jQuery plugin for image/text-sliders. It allows you to animate multiple elements per slide. Set different animation methodes like fade or (from) left, delays and easing for each element, or spimple set some defaults in the plugin options. You also have full layout/design control through html and css (every html-element can be animated). Its also fully responsive.",
+    "keywords": [
+        "cForm",
+		"cform",
+		"html form",
+		"form",
+		"custom form",
+        "custom input",
+        "custom select",
+        "custom form elements",
+        "css form",
+        "css input",
+        "css select",
+        "custom css form",
+        "custom css input",
+        "custom css select",
+        "custom html form",
+        "custom html input",
+        "custom html select",
+    ],
+    "version": "0.4",
+    "author": {
+        "name": "Mario Jäckle | jacksbox.design",
+        "url": "http://jacksbox.de"
+    },
+    "maintainers": [
+        {
+            "name": "Mario Jäckle",
+            "email": "support@jacksbox.de",
+            "url": "http://jacksbox.de"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/jquery/jquery-color/blob/2.1.2/MIT-LICENSE.txt"
+        }
+    ],
+    "homepage": "http://cforms.jacksbox.de",
+    "demo": "http://cforms.jacksbox.de",
+    "docs": "http://cforms.jacksbox.de",
+    "dependencies": {
+        "jquery": ">=1.8"
+    }
+}

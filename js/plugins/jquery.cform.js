@@ -81,6 +81,8 @@
 			    case 'text':
 			    	$node.wrap(template);
 			        break;
+			    case 'file':
+			    	break;
 			    case 'checkbox':
 			    	$html = $(template.replace('{{name}}',name));
 

@@ -1,47 +1,69 @@
 @import "compass/css3";
 @import "compass/utilities";
 
-$background-color: 		#dddddd;
-$border-color: 			#333333;
-$marker-color:			#0066FF;
-$hover-color:			#0066FF;
+// COLORS USED
+
+$color: 				#2A5170;	
+$color-light: 			#1162A0;
+$color-dark: 			#2A3741;
+
+$color-sec: 			#529632;	
+$color-sec-light: 		#4CD70A;
+$color-sec-dark: 		#415736;
+
+$color-ter: 			#B6CCDD;
+
+// ELEMENT COLORS
+
+$c-input-bg: 			$color-ter;
+$c-input-border: 		$color;
+$c-input-border-hover: 	$color-dark;
+$c-input-text: 			$color-dark;
+
+$c-checkbox-marker:		$color;
+
+$c-control-bg:			$color-dark;
+$c-control-hover:		$color-sec;
+
+$c-select-bg:			$color-ter;
+$c-select-highlight:	$color-light;
+$c-select-hover:		$color-sec;
 
 $control-font-size:		1em;
-$control-bg-color:		#333333;
-
-$list-bg-color:			#aaa;
 
 .cform-hidden {
-	// display: inline-block;
-	// width: 0; height: 0;
-	// margin: 0; padding: 0;
-	// border: 0; outline: 0;	
-	// visibility: hidden;
+	position: absolute; top: 0; left:0;
+	display: inline-block;
+	width: 0; height: 0;
+	margin: 0; padding: 0;
+	border: 0; outline: 0;	
+	visibility: hidden;
+	overflow: hidden;
 }
 
-.cform-template {
+.cform-template-input {
 	padding: 3px; margin: 0;
 	box-sizing: border-box;
-	background-color: $background-color;
-	border: 1px solid $border-color;
+	background-color: $c-input-bg;
+	border: 1px solid $c-input-border;
 
 	cursor: pointer;
 
 	&:hover {
-		border-color: $hover-color;
+		border-color: $c-input-border-hover;
 	}
 
 	&:focus,
 	&:active {
-		border-color: $hover-color;
+		border-color: $c-input-border-hover;
 		outline: 0;
 	}
 }
 
 .cform-control-template {
 	padding:5px 10px; margin: 0;
-	background-color: $control-bg-color;
-	border: 1px solid $control-bg-color;
+	background-color: $c-control-bg;
+	border: 1px solid $c-control-bg;
 	box-sizing: border-box;
 
 	font-size: $control-font-size;
@@ -51,7 +73,7 @@ $list-bg-color:			#aaa;
 
 
 	&:hover {
-		background-color: $hover-color;
+		background-color: $c-control-hover;
 		outline: 0;
 	}
 }
@@ -59,13 +81,13 @@ $list-bg-color:			#aaa;
 .cform-submit {
 	input {
 		@extend .cform-control-template;
-	text-align: center;
+		text-align: center;
 	}
 }
 .cform-button {
 	button {
 		@extend .cform-control-template;
-	text-align: center;
+		text-align: center;
 	}
 }
 
@@ -80,32 +102,33 @@ $list-bg-color:			#aaa;
 	
 	}
 	.cform-filename {
-		@extend .cform-template;
+		@extend .cform-template-input;
 
 		position: absolute;
 		top: 0; bottom: 0; left: 120px; right: 0;
 		padding-left: 10px;
 		line-height: 2em;
 		font-size: 0.75em;
+		overflow: hidden;
 	}
 }
 
 
 .cform-text {
 	input{
-		@extend .cform-template;
+		@extend .cform-template-input;
 		padding:5px 10px;
-		color: #000;
+		color: $c-input-text;
 	}
 	textarea{
-		@extend .cform-template;
+		@extend .cform-template-input;
 		padding:5px 10px;
-		color: #000;
+		color: $c-input-text;
 	}
 }
 
 .cform-checkbox {
-	@extend .cform-template;
+	@extend .cform-template-input;
 
 	position: relative;	
 	display: inline-block;
@@ -117,7 +140,7 @@ $list-bg-color:			#aaa;
 	.cform-marker {
 		display: none;
 		width:10px; height: 10px;
-		background-color: $marker-color;
+		background-color: $c-checkbox-marker;
 	}
 
 	&.checked {
@@ -128,7 +151,7 @@ $list-bg-color:			#aaa;
 }
 
 .cform-radio {
-	@extend .cform-template;
+	@extend .cform-template-input;
 
 	position: relative;	
 	display: inline-block;
@@ -142,7 +165,7 @@ $list-bg-color:			#aaa;
 	.cform-marker {
 		display: none;
 		width:10px; height: 10px;
-		background-color: $marker-color;
+		background-color: $c-checkbox-marker;
 
 		@include border-radius(5px);
 	}
@@ -155,7 +178,7 @@ $list-bg-color:			#aaa;
 }
 
 .cform-select {
-	@extend .cform-template;
+	@extend .cform-template-input;
 	padding: 0;
 
 	position: relative;
@@ -176,23 +199,24 @@ $list-bg-color:			#aaa;
 
 		overflow: hidden;
 
-		background-color: $background-color;
-		border-left: 1px solid $background-color;
-		border-bottom: 1px solid $background-color;
-		border-right: 1px solid $background-color;
+		background-color: $c-select-bg;
+		border-left: 1px solid $c-select-bg;
+		border-bottom: 1px solid $c-select-bg;
+		border-right: 1px solid $c-select-bg;
 	
 		@include transition(all .5s linear); 
 
 		li {
 			padding: 4px 8px;
+			color:	$color;
 
 			&.selected {
 				color: #fff;
-				background-color: $hover-color;
+				background-color: $c-select-highlight;
 			}
 			&:hover {
-				color: #000;
-				background-color: $list-bg-color;
+				color: #fff;
+				background-color: $c-select-hover;
 			}
 		}
 	}
@@ -205,7 +229,7 @@ $list-bg-color:			#aaa;
 }
 
 .cform-multiselect {
-	@extend .cform-template;
+	@extend .cform-template-input;
 	padding: 0;
 
 	ul {
@@ -216,20 +240,21 @@ $list-bg-color:			#aaa;
 
 		overflow: hidden;
 
-		background-color: $background-color;
+		background-color: $c-select-bg;
 	
 		@include transition(all .5s linear); 
 
 		li {
 			padding: 4px 8px;
+			color:	$color;
 
 			&.selected {
 				color: #fff;
-				background-color: $hover-color;
+				background-color: $c-select-highlight;
 			}
 			&:hover {
-				color: #000;
-				background-color: $list-bg-color;
+				color: #fff;
+				background-color: $c-select-hover;
 			}
 		}
 	}

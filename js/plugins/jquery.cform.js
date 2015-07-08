@@ -15,6 +15,9 @@
             // elements which will be styled
             var filter = ['input', 'textarea', 'select', 'button'];
 
+            // initialize a array for radio groups 
+        	base.radioGroupArray = [];
+
             // check if the called element a wrapper or a form-element
             // invoce the corresponding functions
             if(base.$element.is(filter.join())){
@@ -24,7 +27,7 @@
             	if(tag === 'select') 	base.handleSelect(base.$element);
             	if(tag === 'button') 	base.handleButton(base.$element);
             	if(tag === 'textarea') 	base.handleTextarea(base.$element);
-            } else {
+            } else {        		
             	base.$element.find('input').each(function(){
             		base.handleInput($(this));
             	});
@@ -181,6 +184,72 @@
 			    	);
 			        break;
 			    case 'radio':
+			    	if(base.radioGroupArray.indexOf(name) > -1){
+			    		break;
+			    	}
+			    	base.radioGroupArray.push(name);
+			    	var $mirrors = $();
+
+			    	$nodes = base.$element.find('input[type="radio"][name="' + name + '"]');
+			    	$nodes.each(function(){
+			    		var $node = $(this),
+			    			value = $node.val(),
+							checked = $node.attr('checked'),
+							$html = $();
+
+			    		$html = $(template.replace('{{name}}', name).replace('{{value}}', value));
+
+						checked && $html.addClass('checked').data('checked', 'true');
+
+						$mirrors = $mirrors.add($html);
+						$node.addClass('hidden').after($html);
+			    	});
+
+					$mirrors.bind(
+						'click', 
+						{
+							$mirrors: $mirrors, 
+							$origins: $nodes
+						}, 
+						function(event){
+							var $node = $(this),
+								$mirrors = event.data.$mirrors,
+								$origins = event.data.$origins,
+								value = $node.data('value');
+			
+							if($node.data('checked')) return true;
+			
+							$mirrors.removeClass('checked')
+								.data('checked', false);
+							$node.addClass('checked')
+								.data('checked', true);
+							$origins.prop('checked', true)
+								.filter('[value="' + value + '"]')
+								.prop('checked', true);
+						}
+					);
+
+					$nodes.bind(
+						'change', 
+						{
+							$mirrors: $mirrors, 
+							$origins: $nodes
+						}, 
+						function(event){
+							var $node = $(this),
+								$mirrors = event.data.$mirrors,
+								$origins = event.data.$origins,
+								value = $node.val();
+
+							if($node.data('checked')) return true;
+
+							$mirrors.removeClass('checked')
+								.data('checked', false)
+								.filter('[data-value="' + value + '"]')
+									.data('checked', true)
+									.addClass('checked');
+						}
+					);
 			        break;
 			    case 'submit':
 			    	$node.wrap(template);
@@ -373,7 +442,7 @@
     		checkbox:		'<div class="cform-checkbox" data-name="{{name}}" data-value="{{value}}">\
     							<div class="cform-marker"></div>\
     						</div>',
-    		radio:			'<div class="cform-radio" data-name="{{name}}">\
+    		radio:			'<div class="cform-radio" data-name="{{name}}" data-value="{{value}}">\
     							<div class="cform-marker"></div>\
     						</div>',
     		select: 		'<div class="cform-select" data-name="{{name}}">\

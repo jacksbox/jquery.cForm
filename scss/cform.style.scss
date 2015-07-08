@@ -127,6 +127,33 @@ $list-bg-color:			#aaa;
 	}
 }
 
+.cform-radio {
+	@extend .cform-template;
+
+	position: relative;	
+	display: inline-block;
+	width: 18px; height: 18px;
+	box-sizing: border-box;
+
+	@include border-radius(9px);
+
+	cursor: pointer;
+
+	.cform-marker {
+		display: none;
+		width:10px; height: 10px;
+		background-color: $marker-color;
+
+		@include border-radius(5px);
+	}
+
+	&.checked {
+		.cform-marker {
+			display: block;
+		}
+	}
+}
+
 .cform-select {
 	@extend .cform-template;
 	padding: 0;

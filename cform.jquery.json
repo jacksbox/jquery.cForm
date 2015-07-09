@@ -1,7 +1,9 @@
 {
     "name": "cform",
     "title": "cForm",
-    "description": "jQuery plugin for image/text-sliders. It allows you to animate multiple elements per slide. Set different animation methodes like fade or (from) left, delays and easing for each element, or spimple set some defaults in the plugin options. You also have full layout/design control through html and css (every html-element can be animated). Its also fully responsive.",
+    "description": "jQuery cForm replaces your standard, ugly form-elements with nice and clean non-form html code which can be styled via CSS.
+The original elements are retained (just hidden), so you won´t loose any form-element related functionality. 
+You can add custom HTML templates for all supported form elements and use CSS to style them. Or you just use the default templates and style them with the included CSS or SCSS file.",
     "keywords": [
         "cForm",
 		"cform",
@@ -43,6 +45,6 @@
     "demo": "http://cforms.jacksbox.de",
     "docs": "http://cforms.jacksbox.de",
     "dependencies": {
-        "jquery": ">=1.8"
+        "jquery": ">=1.7"
     }
 }

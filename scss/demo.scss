@@ -101,7 +101,7 @@ header {
 
 #about {
 	margin-top: 120px;
-	line-height: 1.5em;
+	line-height: 1.4em;
 
 	h2 {
 		margin: 0 0 10px 0;
@@ -113,6 +113,17 @@ header {
 		font-weight: normal;
 		color: $color-dark;
 		opacity: .5;
+	}
+
+	.github {
+		text-align: center;
+	}
+
+	a {
+		@include link-colors($color-light, $color-sec, $color-sec, $color-light, $color-light);
+		text-decoration: none;
+		
+		@include transition(color .25s linear);
 	}
 }
 
@@ -130,6 +141,25 @@ section {
 		font-size: 1.2em;
 		color: $color;
 	}
+	h4 {
+		margin: 0 0 10px 0;
+		color: $color;
+	}
+
+	i {
+		font-style: normal;
+		color: $color-sec;
+	}
+
+	p {
+		margin: 0;
+		line-height: 1.4em;
+	}
+
+	code {
+		margin: 10px;
+		display: block;
+	}
 
 	label {
 		display: block;
@@ -139,7 +169,7 @@ section {
 	}
 
 	.row {
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 	}
 
 	.col25 {
@@ -153,6 +183,14 @@ section {
 	.col50 {
 		box-sizing: border-box;
 		width: 50%;
+		padding: 0 10px;
+
+		float: left;
+	}
+
+	.col100 {
+		box-sizing: border-box;
+		width: 100%;
 		padding: 0 10px;
 
 		float: left;
@@ -186,6 +224,13 @@ section {
 
 	textarea {
 		width: 100%;
+	}
+
+	a {
+		@include link-colors($color-light, $color-sec, $color-sec, $color-light, $color-light);
+		text-decoration: none;
+		
+		@include transition(color .25s linear);
 	}
 }
 

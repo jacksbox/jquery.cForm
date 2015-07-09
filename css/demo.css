@@ -129,7 +129,7 @@ header ul li:hover a:active {
 /* line 102, ../scss/demo.scss */
 #about {
   margin-top: 120px;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }
 /* line 106, ../scss/demo.scss */
 #about h2 {
@@ -144,93 +144,174 @@ header ul li:hover a:active {
   color: #2a3741;
   opacity: .5;
 }
+/* line 118, ../scss/demo.scss */
+#about .github {
+  text-align: center;
+}
+/* line 122, ../scss/demo.scss */
+#about a {
+  color: #1162a0;
+  text-decoration: none;
+  -webkit-transition: color 0.25s linear;
+  -moz-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+/* line 18, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+#about a:visited {
+  color: #1162a0;
+}
+/* line 21, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+#about a:focus {
+  color: #1162a0;
+}
+/* line 24, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+#about a:hover {
+  color: #529632;
+}
+/* line 27, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+#about a:active {
+  color: #529632;
+}
 
-/* line 119, ../scss/demo.scss */
+/* line 130, ../scss/demo.scss */
 section {
   margin-bottom: 80px;
   z-index: 9000;
 }
-/* line 124, ../scss/demo.scss */
+/* line 135, ../scss/demo.scss */
 section h2 {
   color: #2a3741;
   border-bottom: 1px solid #1162a0;
 }
-/* line 128, ../scss/demo.scss */
+/* line 139, ../scss/demo.scss */
 section h3 {
   font-weight: normal;
   font-size: 1.2em;
   color: #2a5170;
 }
-/* line 134, ../scss/demo.scss */
+/* line 144, ../scss/demo.scss */
+section h4 {
+  margin: 0 0 10px 0;
+  color: #2a5170;
+}
+/* line 149, ../scss/demo.scss */
+section i {
+  font-style: normal;
+  color: #529632;
+}
+/* line 154, ../scss/demo.scss */
+section p {
+  margin: 0;
+  line-height: 1.4em;
+}
+/* line 159, ../scss/demo.scss */
+section code {
+  margin: 10px;
+  display: block;
+}
+/* line 164, ../scss/demo.scss */
 section label {
   display: block;
   margin: 0 0 10px 0;
   color: #2a3741;
 }
-/* line 141, ../scss/demo.scss */
+/* line 171, ../scss/demo.scss */
 section .row {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
-/* line 145, ../scss/demo.scss */
+/* line 175, ../scss/demo.scss */
 section .col25 {
   box-sizing: border-box;
   width: 25%;
   padding: 0 10px;
   float: left;
 }
-/* line 153, ../scss/demo.scss */
+/* line 183, ../scss/demo.scss */
 section .col50 {
   box-sizing: border-box;
   width: 50%;
   padding: 0 10px;
   float: left;
 }
-/* line 162, ../scss/demo.scss */
+/* line 191, ../scss/demo.scss */
+section .col100 {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 10px;
+  float: left;
+}
+/* line 200, ../scss/demo.scss */
 section .checkbox-wrapper,
 section .radio-wrapper {
   margin-bottom: 10px;
   zoom: 1;
   /* ie 6/7 */
 }
-/* line 166, ../scss/demo.scss */
+/* line 204, ../scss/demo.scss */
 section .checkbox-wrapper .cform-checkbox,
 section .checkbox-wrapper .cform-radio,
 section .radio-wrapper .cform-checkbox,
 section .radio-wrapper .cform-radio {
   float: left;
 }
-/* line 170, ../scss/demo.scss */
+/* line 208, ../scss/demo.scss */
 section .checkbox-wrapper label,
 section .radio-wrapper label {
   display: inline-block;
   height: 18px;
   margin: 0 0 0 10px;
 }
-/* line 177, ../scss/demo.scss */
+/* line 215, ../scss/demo.scss */
 section .checkbox-wrapper:before, section .checkbox-wrapper:after,
 section .radio-wrapper:before,
 section .radio-wrapper:after {
   content: "";
   display: table;
 }
-/* line 181, ../scss/demo.scss */
+/* line 219, ../scss/demo.scss */
 section .checkbox-wrapper:after,
 section .radio-wrapper:after {
   clear: both;
 }
-/* line 187, ../scss/demo.scss */
+/* line 225, ../scss/demo.scss */
 section textarea {
   width: 100%;
 }
+/* line 229, ../scss/demo.scss */
+section a {
+  color: #1162a0;
+  text-decoration: none;
+  -webkit-transition: color 0.25s linear;
+  -moz-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
+  transition: color 0.25s linear;
+}
+/* line 18, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+section a:visited {
+  color: #1162a0;
+}
+/* line 21, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+section a:focus {
+  color: #1162a0;
+}
+/* line 24, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+section a:hover {
+  color: #529632;
+}
+/* line 27, ../../../../../../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+section a:active {
+  color: #529632;
+}
 
-/* line 192, ../scss/demo.scss */
+/* line 237, ../scss/demo.scss */
 footer {
   padding: 20px 25%;
   border-top: 1px solid #1162a0;
   text-align: center;
   line-height: 1.5em;
 }
-/* line 199, ../scss/demo.scss */
+/* line 244, ../scss/demo.scss */
 footer a {
   color: #1162a0;
   text-decoration: none;

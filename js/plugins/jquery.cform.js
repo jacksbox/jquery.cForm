@@ -329,6 +329,7 @@
 				$options = $options.add($(template).addClass(cssclass));
 			});
 
+			// hide/show options
 			$html.find('.cform-control').bind(
 				'click',
 				{
@@ -337,7 +338,7 @@
 				function(event){
 					$mirror = event.data.$mirror;
 					$mirror.addClass('active');
-					
+
 					$(document).bind(
 						'click.cForm',
 						{

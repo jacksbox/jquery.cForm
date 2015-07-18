@@ -188,7 +188,7 @@
   background-color: #529632;
 }
 /* line 226, ../scss/cform.style.scss */
-.cform-select:hover ul {
+.cform-select.active ul {
   max-height: 1000px;
 }
 

@@ -329,6 +329,29 @@
 				$options = $options.add($(template).addClass(cssclass));
 			});
 
+			$html.find('.cform-control').bind(
+				'click',
+				{
+					$mirror: $html
+				}, 
+				function(event){
+					$mirror = event.data.$mirror;
+					$mirror.addClass('active');
+					
+					$(document).bind(
+						'click.cForm',
+						{
+							$mirror: $mirror
+						},
+						function(event) {
+							$mirror = event.data.$mirror;
+					  		if (!$(event.target).closest('.cform-select').length) {
+								$mirror.removeClass('active');
+					  		  	$(document).unbind('click.cForm');
+					  	}
+					});
+			});
+
 			// when a cForm select-option gets clicked, change its style/values
 			// change the original select/option as well
 			$options.bind(
@@ -353,8 +376,9 @@
 						$node.addClass('selected');
 		
 						$origin.val(value);
-		
+
 						$mirror.data('value', value)
+							.removeClass('active')
 							.find('.cform-control .text')
 								.html(text);							
 					}else{

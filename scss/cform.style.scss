@@ -222,7 +222,7 @@ $control-font-size:		1em;
 		}
 	}
 
-	&:hover {
+	&.active {
 		ul {
 			max-height: 1000px;
 		}

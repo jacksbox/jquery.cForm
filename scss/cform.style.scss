@@ -3,33 +3,66 @@
 
 // COLORS USED
 
-$color: 				#2A5170;	
-$color-light: 			#1162A0;
-$color-dark: 			#2A3741;
+$color: 						#2A5170;	
+$color-light: 					#1162A0;
+$color-dark: 					#2A3741;
+		
+$color-sec: 					#529632;	
+$color-sec-light: 				#4CD70A;
+$color-sec-dark: 				#415736;
+		
+$color-ter: 					#B6CCDD;
+	
+// ELEMENT COLORS	
+	
+$c-input-bg: 					$color-ter;
+$c-input-bg-hover: 				$color-ter;
+$c-input-border: 				$color;
+$c-input-border-hover: 			$color-dark;
+$c-input-text: 					$color-dark;
+$c-input-text-hover: 			$color-dark;
+		
+$c-marker-bg:					$color;
+		
+$c-control-bg:					$color-dark;
+$c-control-bg-hover:			$color-sec;
+$c-control-border:				$color-dark;
+$c-control-border-hover:		$color-sec;
+$c-control-text:				#fff;
+$c-control-text-hover:			#fff;
 
-$color-sec: 			#529632;	
-$color-sec-light: 		#4CD70A;
-$color-sec-dark: 		#415736;
+$c-select-bg:					$color-dark;
+$c-select-bg-hover:				$color-sec;
+$c-select-bg-highlight:			$color-sec;
+$c-select-border:				$color-dark;
+$c-select-border-hover:			$color-sec;
+$c-select-border-highlight:		$color-sec;
+$c-select-text:					#fff;
+$c-select-text-hover:			#fff;
+$c-select-text-highlight:		#fff;
+	
+$c-selectlist-bg:				$color-ter;
+$c-selectlist-bg-hover:			$color-sec;
+$c-selectlist-bg-highlight:		$color;
+$c-selectlist-border:			$color-dark;
+$c-selectlist-border-hover:		$color-dark;
+$c-selectlist-border-highlight:	$color-dark;
+$c-selectlist-text:				$color;
+$c-selectlist-text-hover:		#fff;
+$c-selectlist-text-highlight:	#fff;
 
-$color-ter: 			#B6CCDD;
+// ELEMENT FONTSIZE
 
-// ELEMENT COLORS
+$input-font-size:				1em;
+$control-font-size:				1em;
+$select-font-size:				1em;
 
-$c-input-bg: 			$color-ter;
-$c-input-border: 		$color;
-$c-input-border-hover: 	$color-dark;
-$c-input-text: 			$color-dark;
+// BORDER WIDTH - 0 for no border
 
-$c-checkbox-marker:		$color;
-
-$c-control-bg:			$color-dark;
-$c-control-hover:		$color-sec;
-
-$c-select-bg:			$color-ter;
-$c-select-highlight:	$color-light;
-$c-select-hover:		$color-sec;
-
-$control-font-size:		1em;
+$input-border-size:				1px;
+$control-border-size:			1px;
+$select-border-size:			1px;
+$selectlist-border-size:		1px;
 
 .cform-hidden {
 	position: absolute; top: 0; left:0;
@@ -45,36 +78,66 @@ $control-font-size:		1em;
 	padding: 3px; margin: 0;
 	box-sizing: border-box;
 	background-color: $c-input-bg;
-	border: 1px solid $c-input-border;
+	border: $input-border-size solid $c-input-border;
+
+	font-size: $input-font-size;
+	color: $c-input-text;
 
 	cursor: pointer;
 
 	&:hover {
+		background-color: $c-input-bg-hover;
 		border-color: $c-input-border-hover;
+		color: $c-input-text-hover;
 	}
 
 	&:focus,
 	&:active {
+		background-color: $c-input-bg-hover;
 		border-color: $c-input-border-hover;
+		color: $c-input-text-hover;
 		outline: 0;
 	}
 }
 
 .cform-control-template {
 	position: relative;
-	padding:5px 10px; margin: 0;
+	padding: 5px 10px; margin: 0;
 	background-color: $c-control-bg;
-	border: 1px solid $c-control-bg;
+	border: $control-border-size solid $c-control-border;
 	box-sizing: border-box;
 
 	font-size: $control-font-size;
 
-	color: #fff;
+	color: $c-control-text;
 	cursor: pointer;
 
 
 	&:hover {
-		background-color: $c-control-hover;
+		background-color: $c-control-bg-hover;
+		border-color: $c-control-border-hover;
+		color: $c-control-text-hover;
+		outline: 0;
+	}
+}
+
+.cform-select-control-template {
+	position: relative;
+	padding: 5px 10px; margin: 0;
+	background-color: $c-select-bg;
+	border: $select-border-size solid $c-select-border;
+	box-sizing: border-box;
+
+	font-size: $select-font-size;
+
+	color: $c-select-text;
+	cursor: pointer;
+
+
+	&:hover {
+		background-color: $c-select-bg-hover;
+		border-color: $c-select-border-hover;
+		color: $c-select-text-hover;
 		outline: 0;
 	}
 }
@@ -98,7 +161,7 @@ $control-font-size:		1em;
 	.cform-control {
 		@extend .cform-control-template;
 
-		width:120px;
+		width: 120px;
 		text-align: center;
 	
 	}
@@ -118,13 +181,11 @@ $control-font-size:		1em;
 .cform-text {
 	input{
 		@extend .cform-template-input;
-		padding:5px 10px;
-		color: $c-input-text;
+		padding: 5px 10px;
 	}
 	textarea{
 		@extend .cform-template-input;
-		padding:5px 10px;
-		color: $c-input-text;
+		padding: 5px 10px;
 	}
 }
 
@@ -140,8 +201,8 @@ $control-font-size:		1em;
 
 	.cform-marker {
 		display: none;
-		width:10px; height: 10px;
-		background-color: $c-checkbox-marker;
+		width: 10px; height: 10px;
+		background-color: $c-marker-bg;
 	}
 
 	&.checked {
@@ -165,8 +226,8 @@ $control-font-size:		1em;
 
 	.cform-marker {
 		display: none;
-		width:10px; height: 10px;
-		background-color: $c-checkbox-marker;
+		width: 10px; height: 10px;
+		background-color: $c-marker-bg;
 
 		@include border-radius(5px);
 	}
@@ -186,12 +247,27 @@ $control-font-size:		1em;
 	border: none;
 
 	.cform-control {
-		@extend .cform-control-template;
+		@extend .cform-select-control-template;
+		border-left: $select-border-size solid $c-control-border;
+		border-top: $select-border-size solid $c-control-border;
+		border-right: $select-border-size solid $c-control-border;
+
+		.chevron {
+			color: $c-select-text;
+		}
+
+		&:hover {
+			border-color: $c-control-bg-hover;
+
+			.chevron {
+				color: $c-select-text-hover;
+			}
+		}
 	}
 
 	ul {
 		position: absolute;
-		top: 100%; left: -1px; // -1px because of border
+		top: 100%; left: 0; // -1px because of border
 		margin: 0; padding: 0;
 		width: 100%;
 		max-height: 0px;
@@ -200,29 +276,42 @@ $control-font-size:		1em;
 
 		overflow: hidden;
 
-		background-color: $c-select-bg;
-		border-left: 1px solid $c-select-bg;
-		border-bottom: 1px solid $c-select-bg;
-		border-right: 1px solid $c-select-bg;
+		background-color: $c-selectlist-bg;
 	
 		@include transition(all .5s linear); 
 
 		li {
 			padding: 4px 8px;
-			color:	$color;
+			color:	$c-selectlist-text;
+			border-left: $selectlist-border-size solid $c-selectlist-border;
+			border-right: $selectlist-border-size solid $c-selectlist-border;
 
 			&.selected {
-				color: #fff;
-				background-color: $c-select-highlight;
+				background-color: $c-selectlist-bg-highlight;
+				border-color: $c-selectlist-border-highlight;
+				color: $c-selectlist-text-highlight;
 			}
 			&:hover {
-				color: #fff;
-				background-color: $c-select-hover;
+				background-color: $c-selectlist-bg-hover;
+				border-color: $c-selectlist-border-hover;
+				color: $c-selectlist-text-hover;
+			}
+			&:last-child {
+				border-bottom: $selectlist-border-size solid $c-selectlist-border;
 			}
 		}
 	}
 
 	&.active {
+		.cform-control {
+			background-color: $c-select-bg-highlight;
+			border-color: $c-select-bg-highlight;
+
+			.chevron {
+				border-color: $c-select-text-highlight;
+			}
+		}
+
 		ul {
 			max-height: 1000px;
 		}
@@ -241,21 +330,21 @@ $control-font-size:		1em;
 
 		overflow: hidden;
 
-		background-color: $c-select-bg;
+		background-color: $c-selectlist-bg;
 	
 		@include transition(all .5s linear); 
 
 		li {
 			padding: 4px 8px;
-			color:	$color;
+			color:	$c-selectlist-text;
 
 			&.selected {
 				color: #fff;
-				background-color: $c-select-highlight;
+				background-color: $c-selectlist-bg-highlight;
 			}
 			&:hover {
 				color: #fff;
-				background-color: $c-select-hover;
+				background-color: $c-selectlist-bg-hover;
 			}
 		}
 	}
@@ -270,6 +359,7 @@ $control-font-size:		1em;
 
 	border-style: solid;
 	border-width: 0.15em 0.15em 0 0;
+	border-color: $c-select-text;
 
 	vertical-align: center;
 

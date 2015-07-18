@@ -470,7 +470,7 @@
     							<div class="cform-marker"></div>\
     						</div>',
     		select: 		'<div class="cform-select" data-name="{{name}}">\
-    							<div class="cform-control"><span class="text">{{text}}</span><span class="chevron bottom"</div>\
+    							<div class="cform-control"><span class="text">{{text}}</span><span class="chevron bottom"></span></div>\
     							<ul></ul>\
     						</div>',
     		multiselect: '<div class="cform-multiselect" data-name="{{name}}">\

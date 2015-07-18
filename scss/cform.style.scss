@@ -61,6 +61,7 @@ $control-font-size:		1em;
 }
 
 .cform-control-template {
+	position: relative;
 	padding:5px 10px; margin: 0;
 	background-color: $c-control-bg;
 	border: 1px solid $c-control-bg;
@@ -258,4 +259,22 @@ $control-font-size:		1em;
 			}
 		}
 	}
+}
+
+.chevron::before {
+	content: '';
+	position: absolute;
+	top: 7px; right: 10px;
+	display: inline-block;
+	width: 0.45em; height: 0.45em; 
+
+	border-style: solid;
+	border-width: 0.15em 0.15em 0 0;
+
+	vertical-align: center;
+
+	transform: rotate(-45deg);
+}
+.chevron.bottom:before {
+	transform: rotate(135deg);
 }

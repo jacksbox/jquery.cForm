@@ -35,6 +35,7 @@
 
 /* line 63, ../scss/cform.style.scss */
 .cform-control-template, .cform-submit input, .cform-button button, .cform-file .cform-control, .cform-select .cform-control {
+  position: relative;
   padding: 5px 10px;
   margin: 0;
   background-color: #2a3741;
@@ -44,32 +45,32 @@
   color: #fff;
   cursor: pointer;
 }
-/* line 75, ../scss/cform.style.scss */
+/* line 76, ../scss/cform.style.scss */
 .cform-control-template:hover, .cform-submit input:hover, .cform-button button:hover, .cform-file .cform-control:hover, .cform-select .cform-control:hover {
   background-color: #529632;
   outline: 0;
 }
 
-/* line 82, ../scss/cform.style.scss */
+/* line 83, ../scss/cform.style.scss */
 .cform-submit input {
   text-align: center;
 }
 
-/* line 88, ../scss/cform.style.scss */
+/* line 89, ../scss/cform.style.scss */
 .cform-button button {
   text-align: center;
 }
 
-/* line 94, ../scss/cform.style.scss */
+/* line 95, ../scss/cform.style.scss */
 .cform-file {
   position: relative;
 }
-/* line 97, ../scss/cform.style.scss */
+/* line 98, ../scss/cform.style.scss */
 .cform-file .cform-control {
   width: 120px;
   text-align: center;
 }
-/* line 104, ../scss/cform.style.scss */
+/* line 105, ../scss/cform.style.scss */
 .cform-file .cform-filename {
   position: absolute;
   top: 0;
@@ -82,18 +83,18 @@
   overflow: hidden;
 }
 
-/* line 118, ../scss/cform.style.scss */
+/* line 119, ../scss/cform.style.scss */
 .cform-text input {
   padding: 5px 10px;
   color: #2a3741;
 }
-/* line 123, ../scss/cform.style.scss */
+/* line 124, ../scss/cform.style.scss */
 .cform-text textarea {
   padding: 5px 10px;
   color: #2a3741;
 }
 
-/* line 130, ../scss/cform.style.scss */
+/* line 131, ../scss/cform.style.scss */
 .cform-checkbox {
   position: relative;
   display: inline-block;
@@ -102,19 +103,19 @@
   box-sizing: border-box;
   cursor: pointer;
 }
-/* line 140, ../scss/cform.style.scss */
+/* line 141, ../scss/cform.style.scss */
 .cform-checkbox .cform-marker {
   display: none;
   width: 10px;
   height: 10px;
   background-color: #2a5170;
 }
-/* line 147, ../scss/cform.style.scss */
+/* line 148, ../scss/cform.style.scss */
 .cform-checkbox.checked .cform-marker {
   display: block;
 }
 
-/* line 153, ../scss/cform.style.scss */
+/* line 154, ../scss/cform.style.scss */
 .cform-radio {
   position: relative;
   display: inline-block;
@@ -128,7 +129,7 @@
   border-radius: 9px;
   cursor: pointer;
 }
-/* line 165, ../scss/cform.style.scss */
+/* line 166, ../scss/cform.style.scss */
 .cform-radio .cform-marker {
   display: none;
   width: 10px;
@@ -140,18 +141,18 @@
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 174, ../scss/cform.style.scss */
+/* line 175, ../scss/cform.style.scss */
 .cform-radio.checked .cform-marker {
   display: block;
 }
 
-/* line 180, ../scss/cform.style.scss */
+/* line 181, ../scss/cform.style.scss */
 .cform-select {
   padding: 0;
   position: relative;
   border: none;
 }
-/* line 191, ../scss/cform.style.scss */
+/* line 192, ../scss/cform.style.scss */
 .cform-select ul {
   position: absolute;
   top: 100%;
@@ -171,31 +172,31 @@
   -o-transition: all 0.5s linear;
   transition: all 0.5s linear;
 }
-/* line 209, ../scss/cform.style.scss */
+/* line 210, ../scss/cform.style.scss */
 .cform-select ul li {
   padding: 4px 8px;
   color: #2a5170;
 }
-/* line 213, ../scss/cform.style.scss */
+/* line 214, ../scss/cform.style.scss */
 .cform-select ul li.selected {
   color: #fff;
   background-color: #1162a0;
 }
-/* line 217, ../scss/cform.style.scss */
+/* line 218, ../scss/cform.style.scss */
 .cform-select ul li:hover {
   color: #fff;
   background-color: #529632;
 }
-/* line 225, ../scss/cform.style.scss */
+/* line 226, ../scss/cform.style.scss */
 .cform-select:hover ul {
   max-height: 1000px;
 }
 
-/* line 231, ../scss/cform.style.scss */
+/* line 232, ../scss/cform.style.scss */
 .cform-multiselect {
   padding: 0;
 }
-/* line 235, ../scss/cform.style.scss */
+/* line 236, ../scss/cform.style.scss */
 .cform-multiselect ul {
   margin: 0;
   padding: 0;
@@ -208,18 +209,38 @@
   -o-transition: all 0.5s linear;
   transition: all 0.5s linear;
 }
-/* line 247, ../scss/cform.style.scss */
+/* line 248, ../scss/cform.style.scss */
 .cform-multiselect ul li {
   padding: 4px 8px;
   color: #2a5170;
 }
-/* line 251, ../scss/cform.style.scss */
+/* line 252, ../scss/cform.style.scss */
 .cform-multiselect ul li.selected {
   color: #fff;
   background-color: #1162a0;
 }
-/* line 255, ../scss/cform.style.scss */
+/* line 256, ../scss/cform.style.scss */
 .cform-multiselect ul li:hover {
   color: #fff;
   background-color: #529632;
+}
+
+/* line 264, ../scss/cform.style.scss */
+.chevron::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  border-style: solid;
+  border-width: 0.15em 0.15em 0 0;
+  vertical-align: center;
+  transform: rotate(-45deg);
+}
+
+/* line 278, ../scss/cform.style.scss */
+.chevron.bottom:before {
+  transform: rotate(135deg);
 }

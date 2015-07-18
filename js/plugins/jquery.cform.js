@@ -355,7 +355,7 @@
 						$origin.val(value);
 		
 						$mirror.data('value', value)
-							.find('.cform-control')
+							.find('.cform-control .text')
 								.html(text);							
 					}else{
 						var value_array = [];
@@ -470,7 +470,7 @@
     							<div class="cform-marker"></div>\
     						</div>',
     		select: 		'<div class="cform-select" data-name="{{name}}">\
-    							<div class="cform-control">{{text}}</div>\
+    							<div class="cform-control"><span class="text">{{text}}</span><span class="chevron bottom"</div>\
     							<ul></ul>\
     						</div>',
     		multiselect: '<div class="cform-multiselect" data-name="{{name}}">\

@@ -131,25 +131,41 @@
         	$node.wrap(template);
         };
 
+        // helper for the more complex stuff
+        
+        base.inputData = function($node) {
+        	this.name = $node.attr('name');
+        	this.value = $node.attr('value');
+        	this.checked = $node.attr('checked');
+        	this.template = base.options.templates[$node.attr('type')];
+        	this.$html = $();
+
+			if (typeof this.name === typeof undefined && this.name === false) {
+				this.name = '';
+			}
+			if (typeof this.value === typeof undefined && this.value === false) {
+				this.value = '';
+			}
+			if (typeof this.checked === typeof undefined && this.checked === false) {
+				this.checked = '';
+			}
+
+        	return this;
+        };
+
         /**
 		 * handles the INPUT/FILE conversion
 		 * 
 		 * @param  {object} $node jQuery-Element // INPUT/FILE
 		 */
         base.handleInputFile = function($node) {
-        	var name = $node.attr('name'),
-        		template = base.options.templates['file'],
-        		$html = $();
+        	var data = base.inputData($node);
 
-			if (typeof name === typeof undefined && name === false) {
-				name = '';
-			}
-
-			$html = $(template.replace('{{name}}',name));
+			data.$html = $(data.template.replace('{{name}}',data.name));
 	
 			// when the cForm file button gets clicked
 			// trigger the original file button
-			$html.bind('click', 
+			data.$html.bind('click', 
 				{
 					$node: $node
 				},
@@ -164,7 +180,7 @@
 			$node.bind(
 				'change', 
 				{
-					$html: $html
+					$html: data.$html
 				},
 				function (event) {
 					var filename = $(this).val().split('\\').pop(),
@@ -176,7 +192,7 @@
 				}
 			);
 			
-			base.addToDom($node, $html);
+			base.addToDom($node, data.$html);
         };
 
         /**
@@ -185,32 +201,18 @@
 		 * @param  {object} $node jQuery-Element // INPUT/CHECKBOX
 		 */
         base.handleInputCheckbox = function($node) {
-        	var name = $node.attr('name'),
-        		value = $node.attr('value'),
-        		checked = $node.attr('checked'),
-        		template = base.options.templates['checkbox'],
-        		$html = $();
+        	var data = base.inputData($node);
 
-			if (typeof name === typeof undefined && name === false) {
-				name = '';
-			}
-			if (typeof value === typeof undefined && value === false) {
-				value = '';
-			}
-			if (typeof checked === typeof undefined && checked === false) {
-				checked = '';
-			}
+			data.$html = $(data.template.replace('{{name}}',data.name).replace('{{value}}',data.value));
 
-			$html = $(template.replace('{{name}}',name).replace('{{value}}',value));
-
-			if(checked || checked === 'checked'){
-				$html.addClass('checked')
+			if(data.checked || data.checked === 'checked'){
+				data.$html.addClass('checked')
 					.data('checked', true);
 			}
 
 			// when the cForm checkbox gets clicked, change its style/values
 			// change the original checkbox as well
-			$html.bind(
+			data.$html.bind(
 				'click', 
 				{
 					$origin: $node
@@ -237,7 +239,7 @@
 			$node.bind(
 				'change', 
 				{
-					$mirror: $html
+					$mirror: data.$html
 				}, 
 				function(event){
 					var $node = $(this),
@@ -253,9 +255,8 @@
 				}
 			);
 			
-			base.addToDom($node, $html);
+			base.addToDom($node, data.$html);
         };
-
 
         /**
 		 * handles the INPUT/RADIO conversion
@@ -263,45 +264,31 @@
 		 * @param  {object} $node jQuery-Element // INPUT/RADIO
 		 */
         base.handleInputRadio = function($node) {
-        	var name = $node.attr('name'),
-        		value = $node.attr('value'),
-        		checked = $node.attr('checked'),
-        		template = base.options.templates['radio'],
-        		$html = $();
-
-			if (typeof name === typeof undefined && name === false) {
-				name = '';
-			}
-			if (typeof value === typeof undefined && value === false) {
-				value = '';
-			}
-			if (typeof checked === typeof undefined && checked === false) {
-				checked = '';
-			}
+        	var data = base.inputData($node);
 
 			// for each radio group (= same name) we want do this just once!
-			if(base.radioGroupArray.indexOf(name) > -1){
+			if(base.radioGroupArray.indexOf(data.name) > -1){
 				return false;
 			}
-			base.radioGroupArray.push(name);
+			base.radioGroupArray.push(data.name);
 
 			var $mirrors = $();
 
 			// get all radios with the same name and iterate
 			// create html and insert, also hide the original
-			$nodes = base.$element.find('input[type="radio"][name="' + name + '"]');
+			$nodes = base.$element.find('input[type="radio"][name="' + data.name + '"]');
 			$nodes.each(function(){
 				var $node = $(this),
 					value = $node.val(),
-				checked = $node.attr('checked'),
-				$html = $();
+					checked = $node.attr('checked'),
+					$html = $();
 
-				$html = $(template.replace('{{name}}', name).replace('{{value}}', value));
+				$html = $(data.template.replace('{{name}}', data.name).replace('{{value}}', value));
 
-			checked && $html.addClass('checked').data('checked', 'true');
-
-			$mirrors = $mirrors.add($html);
-			$node.addClass('cform-hidden').after($html);
+				checked && $html.addClass('checked').data('checked', 'true');
+	
+				$mirrors = $mirrors.add($html);
+				$node.addClass('cform-hidden').after($html);
 			});
 
 			// when a cForm radio gets clicked, change its style/values
@@ -354,7 +341,7 @@
 				}
 			);
 			
-			base.addToDom($node, $html);
+			base.addToDom($node, data.$html);
         };
 
        	/**
@@ -363,34 +350,25 @@
 		 * @param  {object} $node jQuery-Element // SELECT
 		 */
         base.handleSelect = function($node){
-        	var name = $node.attr('name'),
-        		value = $node.attr('value'),
-        		multiple = $node.attr('multiple'),
-        		$subnodes = $node.find('option'),
-        		$selected = $subnodes.filter(':selected'),
-        		template = '',
-        		$options = $(),
-        		$html = $();
+        	var data = base.inputData($node);
+        		data.multiple = $node.attr('multiple'),
+        		data.$subnodes = $node.find('option'),
+        		data.$selected = data.$subnodes.filter(':selected'),
+        		data.$options = $();
 
-			if (typeof name === typeof undefined && name === false) {
-				name = '';
-			}			
-			if (typeof value === typeof undefined && value === false) {
-				value = '';
-			}
-			if (typeof multiple === typeof undefined || multiple === false) {
-				multiple = false;
-				template = base.options.templates['select'];
-				$html = $(template.replace('{{name}}', name)
-							.replace('{{text}}', $selected.html()));
+			if (typeof data.multiple === typeof undefined || data.multiple === false) {
+				data.multiple = false;
+				data.template = base.options.templates['select'];
+				data.$html = $(data.template.replace('{{name}}', data.name)
+							.replace('{{text}}', data.$selected.html()));
 			}else{
-				multiple = true;
-				template = base.options.templates['multiselect'];
-				$html = $(template.replace('{{name}}', name));
+				data.multiple = true;
+				data.template = base.options.templates['multiselect'];
+				data.$html = $(data.template.replace('{{name}}', data.name));
 			}
 
 			// create and populate the option list
-			$subnodes.each(function(index){
+			data.$subnodes.each(function(index){
 				var $node = $(this),
 					cssclass = $node.prop('selected')?'selected':'',
 					template = base.options.templates['option'];
@@ -398,14 +376,14 @@
 				template = template.replace('{{value}}', $node.val())
 								.replace('{{text}}', $node.html());
 
-				$options = $options.add($(template).addClass(cssclass));
+				data.$options = data.$options.add($(template).addClass(cssclass));
 			});
 
 			// hide/show options
-			$html.find('.cform-control').bind(
+			data.$html.find('.cform-control').bind(
 				'click',
 				{
-					$mirror: $html
+					$mirror: data.$html
 				}, 
 				function(event){
 					$mirror = event.data.$mirror;
@@ -427,13 +405,13 @@
 
 			// when a cForm select-option gets clicked, change its style/values
 			// change the original select/option as well
-			$options.bind(
+			data.$options.bind(
 				'click', 
 				{
-					$origin: $node, 
-					$mirror: $html, 
-					$options: $options,
-					multiple: multiple
+					$origin:  $node, 
+					$mirror:  data.$html, 
+					$options: data.$options,
+					multiple: data.multiple
 				},
 				function (event) {
 					var $node = $(this),
@@ -480,10 +458,10 @@
 			$node.bind(
 				'change', 
 				{
-					$origin: $node,
-					$mirror: $html,  
-					$options: $options,
-					multiple: multiple
+					$origin:  $node,
+					$mirror:  data.$html,  
+					$options: data.$options,
+					multiple: data.multiple
 				}, 
 				function(event){
 					var $node = $(this),
@@ -505,6 +483,8 @@
 					}else{
 						var value_array = $origin.val()?$origin.val():[],
 							i = 0;
+
+							console.log(value_array);
 						$mirror.data('value', value_array);
 
 						$options.removeClass('selected');
@@ -518,9 +498,9 @@
 			)
 
 			// adds the option-list-html to the cForm element
-			$html.find('ul').append($options);
+			data.$html.find('ul').append(data.$options);
 
-			base.addToDom($node, $html);
+			base.addToDom($node, data.$html);
         };
 
         /**

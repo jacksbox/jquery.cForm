@@ -1,0 +1,47 @@
+{
+  "name": "cForm",
+  "version": "1.2.1",
+  "description": "jQuery cForm replaces your standard, ugly form-elements with nice and clean non-form html code which can be styled via CSS.",
+  "main": [
+    "js/jquery.cform.js",
+    "scss/cform-style.scss"
+  ],
+  "dependencies": {
+    "jquery": "~1.7",
+  },
+  "devDependencies": {
+  }
+  "moduleType": [
+  ],
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "cForm",
+    "cform",
+    "html form",
+    "form",
+    "custom form",
+    "custom input",
+    "custom select",
+    "custom form elements",
+    "css form",
+    "css input",
+    "css select",
+    "custom css form",
+    "custom css input",
+    "custom css select",
+    "custom html form",
+    "custom html input",
+    "custom html select"
+  ],
+  "authors": [
+    "Mario Jäckle <support@jacksbox.de> (www.jacksbox.de)"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "demo",
+    "cform.jquery.json",
+    "package.json",
+  ]
+}

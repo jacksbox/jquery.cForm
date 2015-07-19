@@ -1,5 +1,5 @@
 /*!
- * jQuery cForms v1.2.1
+ * jQuery cForms v1.2.2
  * http://cforms.jacksbox.de
  *
  * Author: Mario Jäckle

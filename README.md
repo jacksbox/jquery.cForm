@@ -1,4 +1,4 @@
-# jquery.cForms
+# jquery.cForm
 jQuery cForm replaces your in many cases unstylable form-elements (input, select, radio, checkbox, file, button, textarea) with nice and clean non-form html code which can be styled via CSS.
 The original elements are retained (just hidden), so you won´t loose any form-element related functionality. 
 You can add custom HTML templates for all supported form elements and use CSS to style them. Or you just use the default templates and style them with the included CSS or SCSS file.

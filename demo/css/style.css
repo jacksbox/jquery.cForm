@@ -1,0 +1,52 @@
+/* line 1, ../scss/style.scss */
+body {
+  font-family: Arial, Sans-Serif;
+}
+
+/* line 5, ../scss/style.scss */
+.wrapper {
+  margin: 0 auto;
+  padding: 20px 0 80px 0;
+  width: 1000px;
+}
+
+/* line 11, ../scss/style.scss */
+.row {
+  padding: 10px 0;
+}
+/* line 14, ../scss/style.scss */
+.row .col33 {
+  padding: 0 10px;
+  width: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+
+/* line 23, ../scss/style.scss */
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+}
+
+/* line 28, ../scss/style.scss */
+.row:after {
+  clear: both;
+}
+
+/* line 32, ../scss/style.scss */
+.row {
+  zoom: 1;
+  /* ie 6/7 */
+}
+
+/* line 36, ../scss/style.scss */
+label {
+  display: block;
+  margin: 0 0 10px 0;
+}
+
+/* line 41, ../scss/style.scss */
+textarea {
+  width: 100%;
+}

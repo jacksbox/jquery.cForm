@@ -1,0 +1,43 @@
+body {
+	font-family: Arial, Sans-Serif;
+}
+
+.wrapper {
+	margin: 0 auto;
+	padding: 20px 0 80px 0;
+	width: 1000px;
+}
+
+.row {
+	padding: 10px 0;
+
+	.col33 {
+		padding: 0 10px;
+		width: 33.33%;
+		box-sizing: border-box;
+		float: left;
+	}
+}
+
+.row:before,
+.row:after {
+    content: "";
+    display: table;
+}
+ 
+.row:after {
+    clear: both;
+}
+ 
+.row {
+    zoom: 1; /* ie 6/7 */
+}
+
+label {
+	display: block;
+	margin: 0 0 10px 0;
+}
+
+textarea {
+	width: 100%;
+}

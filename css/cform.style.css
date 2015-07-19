@@ -260,12 +260,12 @@
   padding: 0;
   width: 100%;
   list-style: none;
-  overflow: hidden;
   background-color: #b6ccdd;
   -webkit-transition: all 0.5s linear;
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
   transition: all 0.5s linear;
+  overflow: hidden;
 }
 /* line 337, ../scss/cform.style.scss */
 .cform-multiselect ul li {

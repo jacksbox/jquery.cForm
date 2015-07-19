@@ -257,7 +257,7 @@ $selectlist-border-size:		1px;
 		}
 
 		&:hover {
-			border-color: $c-control-bg-hover;
+			border-color: $c-control-border-hover;
 
 			.chevron {
 				color: $c-select-text-hover;
@@ -305,7 +305,7 @@ $selectlist-border-size:		1px;
 	&.active {
 		.cform-control {
 			background-color: $c-select-bg-highlight;
-			border-color: $c-select-bg-highlight;
+			border-color: $c-select-border-highlight;
 
 			.chevron {
 				border-color: $c-select-text-highlight;
@@ -328,11 +328,11 @@ $selectlist-border-size:		1px;
 
 		list-style: none;
 
-		overflow: hidden;
-
 		background-color: $c-selectlist-bg;
 	
 		@include transition(all .5s linear); 
+
+		overflow: hidden;
 
 		li {
 			padding: 4px 8px;

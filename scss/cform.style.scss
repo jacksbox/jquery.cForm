@@ -278,7 +278,7 @@ $selectlist-border-size:		1px;
 
 		background-color: $c-selectlist-bg;
 	
-		@include transition(all .5s linear); 
+		@include transition(max-height .5s linear); 
 
 		li {
 			padding: 4px 8px;
@@ -313,7 +313,7 @@ $selectlist-border-size:		1px;
 		}
 
 		ul {
-			max-height: 1000px;
+			max-height: 800px;
 		}
 	}
 }

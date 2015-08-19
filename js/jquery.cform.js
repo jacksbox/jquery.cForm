@@ -1,5 +1,5 @@
 /*!
- * jQuery cForms v1.2.3
+ * jQuery cForms v1.2.4
  * http://cforms.jacksbox.de
  *
  * Author: Mario Jäckle
@@ -354,6 +354,7 @@
         		data.multiple = $node.attr('multiple'),
         		data.$subnodes = $node.find('option'),
         		data.$selected = data.$subnodes.filter(':selected'),
+        		data.optionsHtml = '',
         		data.$options = $();
 
 			if (typeof data.multiple === typeof undefined || data.multiple === false) {
@@ -374,10 +375,12 @@
 					template = base.options.templates['option'];
 
 				template = template.replace('{{value}}', $node.val())
-								.replace('{{text}}', $node.html());
+								.replace('{{text}}', $node.html())
+								.replace('{{class}}', cssclass);
 
-				data.$options = data.$options.add($(template).addClass(cssclass));
+				data.optionsHtml += template;
 			});
+			data.$options = $(data.optionsHtml).filter('li');
 
 			// hide/show options
 			data.$html.find('.cform-control').bind(
@@ -553,7 +556,7 @@
     		multiselect: '<div class="cform-multiselect" data-name="{{name}}">\
     							<ul></ul>\
     						</div>',
-    		option: 		'<li data-value="{{value}}">{{text}}</li>',
+    		option: 		'<li data-value="{{value}}" class="{{class}}">{{text}}</li>',
     		button: 		'<div class="cform-button"></div>',
     		submit: 		'<div class="cform-submit"></div>',
     	}

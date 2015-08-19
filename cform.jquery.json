@@ -23,7 +23,7 @@ You can add custom HTML templates for all supported form elements and use CSS to
         "custom html input",
         "custom html select",
     ],
-    "version": "1.2.3",
+    "version": "1.2.4",
     "author": {
         "name": "Mario Jäckle | jacksbox.design",
         "url": "http://jacksbox.de"

@@ -52,6 +52,7 @@ In case of *text*, *password* and *textarea*, the given template will just be wr
 All other templates have to include `data-name="{{name}}"` and `data-value="{{value}}"` in the outermost element.
 
 *select* templates also have to contain the placeholder `{{text}}`, which indicates the position the current selected value will be shown.
+*options* templates contain a placeholder `{{class}}`, which will add a class `selected` to the by default selected option.
 
 (to see how the default templates look, scroll to the end of the readme file)
 
@@ -105,7 +106,7 @@ select multiple // multiselect
 </div>
 
 select option // option
-<li data-value="{{value}}">{{text}}</li>
+<li data-value="{{value}}" class="{{class}}">{{text}}</li>
 
 button // button
 <div class="cform-button"></div>

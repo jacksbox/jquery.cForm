@@ -5,6 +5,10 @@ You can add custom HTML templates for all supported form elements and use CSS to
 
 ####[Demo](http://cform.jacksbox.de)
 
+### Feedback
+
+Please give me feedback to make cForm better: Either as github-issue, or to [support@jacksbox.de](support@jacksbox.de)
+
 ## Usage
 
 **1. Include script**

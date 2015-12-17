@@ -27,7 +27,7 @@
             // elements which will be styled
             var filter = ['input', 'textarea', 'select', 'button'];
 
-            // initialize a array for radio groups 
+            // initialize an array for radio groups
         	base.radioGroupArray = [];
 
             // check if the called element a wrapper or a form-element
@@ -55,7 +55,7 @@
             }
         };
 
-        // identify inpout type
+        // identify input type
         
 
         base.identifyInputType = function($node){
@@ -424,6 +424,11 @@
 						multiple = event.data.multiple,
 						value = $node.data('value'),
 						text = $node.html();
+
+					if($node.hasClass('disabled')){
+						// don't handle the click
+						return;
+					}
 						
 					if(!multiple){
 						$options.not($node).removeClass('selected');
@@ -453,6 +458,8 @@
 							$node.addClass('selected');
 						}
 					}
+
+					$origin.trigger('cFormChanged');
 				}
 			);
 
@@ -477,7 +484,7 @@
 
 					if(!multiple){
 						$mirror.data('value', value)
-							.find('.cform-control')
+							.find('.cform-control .text')
 								.html(text);
 		
 						$options.removeClass('selected')
@@ -499,6 +506,43 @@
 					}
 				}
 			)
+
+			// when the original select gets changed via js or other means
+			// update the cForm select/options as well
+			$node.bind(
+				'updateAttributes',
+				{
+					$origin:  $node,
+					$mirror:  data.$html,
+					$options: data.$options,
+					multiple: data.multiple
+				},
+				function(event){
+					var $node = $(this),
+						value = $node.val(),
+						text = $node.find('option[value="' + value + '"]').html(),
+						$origin = event.data.$origin,
+						$mirror = event.data.$mirror,
+						$options = event.data.$options,
+						multiple = event.data.multiple;
+
+					var $originOptions = $origin.find('option');
+					var $mirrorOptions = $mirror.find('li');
+					$options.each(function(index){
+						var $dataAttributes = $originOptions.eq(index).data();
+						$mirrorOptions.eq(index).data($dataAttributes);
+						console.log($mirrorOptions.eq(index).data());
+
+						var $disabled = $originOptions.eq(index).prop('disabled');
+						if ($disabled) {
+							$mirrorOptions.eq(index).addClass('disabled');
+						} else {
+							$mirrorOptions.eq(index).removeClass('disabled');
+						}
+					});
+				}
+			)
+
 
 			// adds the option-list-html to the cForm element
 			data.$html.find('ul').append(data.$options);

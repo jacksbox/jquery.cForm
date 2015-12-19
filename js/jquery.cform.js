@@ -1,5 +1,5 @@
 /*!
- * jQuery cForms v1.2.5
+ * jQuery cForms v1.2.6
  * http://cforms.jacksbox.de
  *
  * Author: Mario Jäckle
@@ -355,17 +355,25 @@
         		data.$subnodes = $node.find('option'),
         		data.$selected = data.$subnodes.filter(':selected'),
         		data.optionsHtml = '',
-        		data.$options = $();
+        		data.$options = $(),
+        		data.cssclass = "";
 
+
+			if($node.hasClass("disabled") || $node.is('[disabled=disabled]')){
+				data.cssclass = "disabled";
+				$node.addClass("disabled");
+			}
 			if (typeof data.multiple === typeof undefined || data.multiple === false) {
 				data.multiple = false;
 				data.template = base.options.templates['select'];
 				data.$html = $(data.template.replace('{{name}}', data.name)
-							.replace('{{text}}', data.$selected.html()));
+							.replace('{{text}}', data.$selected.html())
+							.replace('{{class}}', data.cssclass));
 			}else{
 				data.multiple = true;
 				data.template = base.options.templates['multiselect'];
-				data.$html = $(data.template.replace('{{name}}', data.name));
+				data.$html = $(data.template.replace('{{name}}', data.name)
+							.replace('{{class}}', data.cssclass));
 			}
 
 			// create and populate the option list
@@ -386,10 +394,17 @@
 			data.$html.find('.cform-control').bind(
 				'click',
 				{
+					$origin:  $node, 
 					$mirror: data.$html
 				}, 
 				function(event){
-					$mirror = event.data.$mirror;
+					var $origin = event.data.$origin,
+						$mirror = event.data.$mirror;
+
+					if( $origin.hasClass('disabled') ||  $origin.is('[disabled=disabled]')){
+						// don't handle the click
+						return false;
+					}
 					$mirror.addClass('active');
 
 					$(document).bind(
@@ -399,6 +414,7 @@
 						},
 						function(event) {
 							$mirror = event.data.$mirror;
+
 					  		if (!$(event.target).closest('.cform-select').length) {
 								$mirror.removeClass('active');
 					  		  	$(document).unbind('click.cForm');
@@ -425,7 +441,7 @@
 						value = $node.data('value'),
 						text = $node.html();
 
-					if($node.hasClass('disabled')){
+					if( $node.hasClass('disabled') ||  $node.is('[disabled=disabled]')){
 						// don't handle the click
 						return;
 					}
@@ -494,18 +510,17 @@
 						var value_array = $origin.val()?$origin.val():[],
 							i = 0;
 
-							console.log(value_array);
 						$mirror.data('value', value_array);
 
 						$options.removeClass('selected');
 						
 						for(i = 0; i < value_array.length; i++){
 							$options.filter('[data-value="' + value_array[i] + '"]')
-								.addClass('selected')
-						};
+								.addClass('selected');
+						}
 					}
 				}
-			)
+			);
 
 			// when the original select gets changed via js or other means
 			// update the cForm select/options as well
@@ -531,7 +546,6 @@
 					$options.each(function(index){
 						var $dataAttributes = $originOptions.eq(index).data();
 						$mirrorOptions.eq(index).data($dataAttributes);
-						console.log($mirrorOptions.eq(index).data());
 
 						var $disabled = $originOptions.eq(index).prop('disabled');
 						if ($disabled) {
@@ -541,7 +555,7 @@
 						}
 					});
 				}
-			)
+			);
 
 
 			// adds the option-list-html to the cForm element
@@ -593,7 +607,7 @@
     		radio:			'<div class="cform-radio" data-name="{{name}}" data-value="{{value}}">\
     							<div class="cform-marker"></div>\
     						</div>',
-    		select: 		'<div class="cform-select" data-name="{{name}}">\
+    		select: 		'<div class="cform-select {{class}}" data-name="{{name}}">\
     							<div class="cform-control"><span class="text">{{text}}</span><span class="chevron bottom"></span></div>\
     							<ul></ul>\
     						</div>',

@@ -34,12 +34,14 @@ $c-control-text-hover:			#fff;
 $c-select-bg:					$color-dark;
 $c-select-bg-hover:				$color-sec;
 $c-select-bg-highlight:			$color-sec;
+$c-select-bg-disabled:			#aaa;
 $c-select-border:				$color-dark;
 $c-select-border-hover:			$color-sec;
 $c-select-border-highlight:		$color-sec;
 $c-select-text:					#fff;
 $c-select-text-hover:			#fff;
 $c-select-text-highlight:		#fff;
+$c-select-text-disabled:		#fff;
 	
 $c-selectlist-bg:				$color-ter;
 $c-selectlist-bg-hover:			$color-sec;
@@ -300,6 +302,17 @@ $selectlist-border-size:		1px;
 				border-bottom: $selectlist-border-size solid $c-selectlist-border;
 			}
 		}
+	}
+
+	&.disabled .cform-control{
+			background-color: $c-select-bg-disabled;
+			color: $c-select-text-disabled;
+			cursor: default;
+
+			&:hover {
+				background-color: $c-select-bg-disabled;
+				color: $c-select-text-disabled;
+			}
 	}
 
 	&.active {

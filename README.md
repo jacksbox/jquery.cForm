@@ -56,7 +56,7 @@ In case of *text*, *password* and *textarea*, the given template will just be wr
 All other templates have to include `data-name="{{name}}"` and `data-value="{{value}}"` in the outermost element.
 
 *select* templates also have to contain the placeholder `{{text}}`, which indicates the position the current selected value will be shown.
-*options* templates contain a placeholder `{{class}}`, which will add a class `selected` to the by default selected option.
+*select* and *options* templates contain a placeholder `{{class}}`, which will add a class `selected` to the by default selected option.
 
 (to see how the default templates look, scroll to the end of the readme file)
 
@@ -69,6 +69,11 @@ the connected (and hidden) form-element.
 If you want to change a form-value by JavaScript, change the value of the original 
 element and use the jQuery function `.trigger('change')` on the changed element: the 
 connected cForm element will than be updated automatically.
+
+Calling `updateAttributes` on a cForm-Select field will check the original select field for changed attributes 
+(e.g. disabled) and update them on the cForm-Select.
+
+Additionaly there is a `cFormChanged` Event which will be fired when a cForm-Element was changed.
 
 ## List of default templates
 
@@ -99,13 +104,13 @@ input type="radio" // radio
 </div>
 
 select // select
-<div class="cform-select" data-name="{{name}}">
+<div class="cform-select {{class}}" data-name="{{name}}">
   <div class="cform-control">{{text}}</div>
   <ul></ul>
 </div>
 
 select multiple // multiselect
-<div class="cform-multiselect" data-name="{{name}}">
+<div class="cform-multiselect {{class}}" data-name="{{name}}">
   <ul></ul>
 </div>
 
